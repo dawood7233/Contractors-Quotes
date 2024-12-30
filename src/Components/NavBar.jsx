@@ -1,10 +1,9 @@
-
 const NavBar = () => {
   return (
     <div>
-       <div className="navbar bg-base-100">
+       <div className="navbar bg-black text-base-100 fixed top-0 left-0 w-full z-20 shadow-lg">
         <div className="navbar-start">
-          <div className="dropdown lg:hidden">
+          <div className="dropdown md:hidden">
             <div
               tabIndex={0}
               role="button"
@@ -27,7 +26,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li><a href="/">Home</a></li>
               <li>
@@ -42,15 +41,17 @@ const NavBar = () => {
               <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">HomeQuotesNow</a>
+          <a href="/" className="flex items-center">
+            <img className="h-14 lg:h-16 pl-3" src="logo.png" alt="Logo" />
+          </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">
             <li><a href="/">Home</a></li>
             <li>
               <details>
                 <summary>Services</summary>
-                <ul className="p-2">
+                <ul className="p-2 bg-black">
                   <li><a>Solar</a></li>
                   <li><a>Windows</a></li>
                 </ul>
