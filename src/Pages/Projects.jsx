@@ -1,9 +1,10 @@
 import React from 'react'
+import OurWork from '../Components/OurWork'
 
 const Projects = () => {
   return (
-    <div>
-      Projects page
+    <div className='pt-16'>
+      <OurWork/>
     </div>
   )
 }

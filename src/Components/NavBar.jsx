@@ -1,14 +1,10 @@
 const NavBar = () => {
   return (
     <div>
-       <div className="navbar bg-black text-base-100 fixed top-0 left-0 w-full z-20 shadow-lg">
+      <div className="navbar bg-[#1f2020] text-base-100 fixed top-0 left-0 w-full z-20 shadow-lg">
         <div className="navbar-start">
           <div className="dropdown md:hidden">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost"
-            >
+            <div tabIndex={0} role="button" className="btn btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -28,17 +24,63 @@ const NavBar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li><a href="/">Home</a></li>
+              {/* For mobile */}
               <li>
-                <a>Services</a>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/services">Services</a>
                 <ul className="p-2">
-                  <li><a>Solar</a></li>
-                  <li><a>Roofing</a></li>
+                  <li>
+                    <a>Solar</a>
+                  </li>
+                  <li>
+                    <a>Windows</a>
+                  </li>
+                  <li>
+                    <a>Roofing</a>
+                  </li>
+                  <li>
+                    <a>HVAC</a>
+                  </li>
+                  <li>
+                    <a>Painting</a>
+                  </li>
+                  <li>
+                    <a>Plumbing</a>
+                  </li>
+                  <li>
+                    <a>Gutters</a>
+                  </li>
+                  <li>
+                    <a>Home Security</a>
+                  </li>
+                  <li>
+                    <a>Kitchen</a>
+                  </li>
+                  <li>
+                    <a>Siding</a>
+                  </li>
+                  <li>
+                    <a>Bathroom</a>
+                  </li>
+                  <li>
+                    <a>Fencing</a>
+                  </li>
+                  <li>
+                    <a>Flooring</a>
+                  </li>
                 </ul>
               </li>
-              <li><a href="/projects">Projects</a></li>
-              <li><a href="/aboutUs">About Us</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li>
+                <a href="/projects">Projects</a>
+              </li>
+              <li>
+                <a href="/aboutUs">About Us</a>
+              </li>
+              <li>
+                <a href="/contact">Contact</a>
+              </li>
             </ul>
           </div>
           <a href="/" className="flex items-center">
@@ -46,29 +88,82 @@ const NavBar = () => {
           </a>
         </div>
         <div className="navbar-center hidden md:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li><a href="/">Home</a></li>
+          <ul className="menu menu-horizontal px-1 text-[16px]">
             <li>
-              <details>
-                <summary>Services</summary>
-                <ul className="p-2 bg-black">
-                  <li><a>Solar</a></li>
-                  <li><a>Windows</a></li>
-                </ul>
-              </details>
+              <a href="/" className="hover:text-[#ffb000] hover-underline-animation ">
+                Home
+              </a>
             </li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/aboutUs">About Us</a></li>
+            <li className="relative group">
+              <a className="hover:text-[#ffb000] cursor-pointer" href="/services">Services
+              </a>
+              {/* Sub-section menu */}
+              <ul className="absolute hidden group-hover:flex bg-[#1f2020] px-10 py-4 rounded-lg shadow-lg w-[350px] flex-wrap gap-4 z-20 top-full left-0">
+                <li>
+                  <a className="hover:text-[#ffb000] ">Solar</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Windows</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Roofing</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">HVAC</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Painting</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Plumbing</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Gutters</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Home Security</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Kitchen</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Siding</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Bathroom</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Fencing</a>
+                </li>
+                <li>
+                  <a className="hover:text-[#ffb000]">Flooring</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="/contact" className="hover:text-[#ffb000] hover-underline-animation">
+                Contact
+              </a>
+            </li>
+            <li>
+              <a href="/projects" className="hover:text-[#ffb000] hover-underline-animation">
+                Projects
+              </a>
+            </li>
+            <li>
+              <a href="/aboutUs" className="hover:text-[#ffb000] hover-underline-animation">
+                About Us
+              </a>
+            </li>
           </ul>
         </div>
 
         <div className="navbar-end">
-          <a className="btn bg-fuchsia-700 text-amber-400">Get Quotes</a>
+          <a className="btn bg-primary text-black">Get Quotes</a>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

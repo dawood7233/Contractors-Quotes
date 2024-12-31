@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hover-underline-animation {
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Adjust the underline position */
+  width: 0;
+  height: 2px; /* Underline thickness */
+  background-color: #ffb000; /* Underline color */
+  transition: width 0.3s ease-in-out;
+}
+
+.hover-underline-animation:hover::after {
+  width: 100%; /* Full width underline on hover */
+}
