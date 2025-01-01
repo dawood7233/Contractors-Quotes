@@ -11,14 +11,15 @@ import ServiceDetails from "./Components/ServiceDetails";
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Navbar data={{ Services }} />
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<Services data={{}} />} />
           <Route path="/services/:id" element={<ServiceDetails />} />
+          <Route path="/services/form" element={<ServiceDetails />} />
           <Route path="/projects" element={<Projects />} />
         </Routes>
       </div>

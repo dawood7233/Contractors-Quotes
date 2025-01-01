@@ -1,26 +1,15 @@
 import React, { useState } from "react";
 import OurWork from "../Components/OurWork";
 import Services from "./Services";
+import { allServices } from "../Components/servicesData";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState("");
+  const navigate = useNavigate();
 
-  const projectTypes = [
-    "Solar",
-    "Windows",
-    "Roofing",
-    "HVAC",
-    "Painting",
-    "Plumbing",
-    "Gutters",
-    "Home Security",
-    "Kitchen",
-    "Siding",
-    "Bathroom",
-    "Fencing",
-    "Flooring",
-  ];
+  const projectTypes = allServices.map((service) => service.title);
 
   const handleSelect = (type) => {
     setSelectedProject(type);
@@ -41,7 +30,7 @@ const HomePage = () => {
       ></video>
 
       {/* Quote Input Section */}
-      <div className="absolute top-80 left-64 w-96 bg-[#1f2020] shadow-xl z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl">
+      <div className="absolute top-80 left-64 w-96 bg-[rgba(31,32,32,0.7)] hover:shadow-[2px_4px_6px_rgba(255,174,0,1)] z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl">
         <div className="card-body space-y-4">
           {/* Dropdown Input */}
           <div className="relative">
@@ -77,7 +66,16 @@ const HomePage = () => {
 
           {/* Button */}
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Get Quote</button>
+            <button
+              className="btn btn-primary"
+              onClick={() =>
+                navigate(`/services/${service.id}`, {
+                  state: { title: service.title },
+                })
+              }
+            >
+              Get Quote
+            </button>
           </div>
         </div>
       </div>
@@ -100,7 +98,10 @@ const HomePage = () => {
             Let us connect you with the right professionals to make your project
             a success.
           </p>
-          <button className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100">
+          <button
+            className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100"
+            onClick={() => navigate("/services/form")}
+          >
             Get Started
           </button>
         </div>
