@@ -1,85 +1,232 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { allServices } from "../Components/servicesData"; 
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom"; 
+import { allServices } from "../Components/servicesData";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false); 
+  const [servicesSubmenuOpen, setServicesSubmenuOpen] = useState(false); 
+  const menuRef = useRef(null); 
+
+  
+// Function to determine if the current page matches the link path
+const isActiveLink = (path) => location.pathname === path;
+
+  // Toggle main menu visibility
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+    setServicesSubmenuOpen(false); 
+  };
+  // Toggle menu for closing the menu after touching the cross
+  const toggleMenuClose = () => {
+    setMenuOpen(menuOpen);
+    setServicesSubmenuOpen(false);
+
+  }
+
+  // Toggle services submenu visibility
+  const toggleServicesSubmenu = () =>
+    setServicesSubmenuOpen(!servicesSubmenuOpen);
+
+  // Close the menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+        setServicesSubmenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div>
       <div className="navbar bg-[#1f2020] text-base-100 fixed top-0 left-0 w-full z-20 shadow-lg">
+        {/* Navbar Start */}
         <div className="navbar-start">
-          <div className="dropdown md:hidden">
-            <div tabIndex={0} role="button" className="btn btn-ghost">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/services">Services</a>
-                <ul className="p-2">
-                  {allServices.map((service) => (
-                    <li key={service.id}>
-                      <a
-                        onClick={() =>
-                          navigate(`/services/${service.id}`, {
-                            state: { title: service.title },
-                          })
-                        }
-                        className="hover:text-[#ffb000]"
-                      >
-                        {service.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-              <li>
-                <a href="/projects">Projects</a>
-              </li>
-              <li>
-                <a href="/aboutUs">About Us</a>
-              </li>
-              <li>
-                <a href="/contact">Contact</a>
-              </li>
-            </ul>
+          {/* Mobile Menu (Hamburger Icon) */}
+          <div className="md:hidden">
+            <button  className="btn btn-ghost" >
+              {menuOpen ? (
+                // Cross Icon (close the menu)
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  onClick={toggleMenuClose}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                // Hamburger Icon (open the menu)
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  onClick={toggleMenu} 
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              )}
+            </button>
           </div>
+
+          {/* Logo */}
           <a href="/" className="flex items-center">
             <img className="h-14 lg:h-16 pl-3" src="logo.png" alt="Logo" />
           </a>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {menuOpen && (
+          <div
+            ref={menuRef}
+            className="absolute top-16 left-0 w-full bg-[#1f2020] text-base-100 z-10 shadow-lg"
+          >
+            <ul className="menu p-4">
+              <li>
+                <a
+                  href="/"
+                  onClick={() => {
+                    toggleMenu();
+                  }}
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <div className="flex items-center justify-between">
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleServicesSubmenu();
+                    }}
+                  >
+                    Services
+                  </a>
+                  <button
+                    onClick={toggleServicesSubmenu}
+                    className={isActiveLink("/services") ? "text-[#ffb000]" : ""}
+                  >
+                    {servicesSubmenuOpen ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M18 15l-6-6-6 6"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M6 9l6 6 6-6"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+                {servicesSubmenuOpen && (
+                  <ul className="pl-4">
+                    {allServices.map((service) => (
+                      <li key={service.id}>
+                        <a
+                          onClick={() => {
+                            toggleMenu();
+                            navigate(`/services/${service.id}`, {
+                              state: { title: service.title },
+                            });
+                          }}
+                          className="hover:text-[#ffb000]"
+                        >
+                          {service.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+              <li>
+                <a
+                  href="/projects"
+                  onClick={() => {
+                    toggleMenu();
+                  }}
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/aboutUs"
+                  onClick={() => {
+                    toggleMenu();
+                  }}
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  onClick={() => {
+                    toggleMenu();
+                  }}
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {/* Navbar Center (Desktop) */}
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1 text-[16px]">
             <li>
               <a
                 href="/"
-                className="hover:text-[#ffb000] hover-underline-animation "
+                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/") ? "text-[#ffb000] active-underline" : ""}`}
               >
                 Home
               </a>
             </li>
             <li className="relative group">
               <a
-                className="hover:text-[#ffb000] cursor-pointer"
+                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/services") ? "text-[#ffb000] active-underline" : ""}`}
                 href="/services"
               >
                 Services
@@ -104,7 +251,7 @@ const NavBar = () => {
             <li>
               <a
                 href="/contact"
-                className="hover:text-[#ffb000] hover-underline-animation"
+                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/contact") ? "text-[#ffb000] active-underline" : ""}`}
               >
                 Contact
               </a>
@@ -112,7 +259,7 @@ const NavBar = () => {
             <li>
               <a
                 href="/projects"
-                className="hover:text-[#ffb000] hover-underline-animation"
+                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/projects") ? "text-[#ffb000] active-underline" : ""}`}
               >
                 Projects
               </a>
@@ -127,8 +274,12 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
+
+        {/* Navbar End */}
         <div className="navbar-end">
-          <a className="btn bg-primary text-black" href="/services/form">Get Quotes</a>
+          <a className="btn bg-primary text-black" href="/services">
+            Get Quotes
+          </a>
         </div>
       </div>
     </div>

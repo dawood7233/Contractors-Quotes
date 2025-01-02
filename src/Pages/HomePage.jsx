@@ -30,7 +30,7 @@ const HomePage = () => {
       ></video>
 
       {/* Quote Input Section */}
-      <div className="absolute top-80 left-64 w-96 bg-[rgba(31,32,32,0.7)] hover:shadow-[2px_4px_6px_rgba(255,174,0,1)] z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl">
+      <div className="absolute top-80 left-64 w-96 bg-[rgba(31,32,32,0.7)] hover:shadow-[2px_4px_6px_rgba(255,174,0,1)] z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl sm:block hidden">
         <div className="card-body space-y-4">
           {/* Dropdown Input */}
           <div className="relative">
@@ -100,7 +100,7 @@ const HomePage = () => {
           </p>
           <button
             className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100"
-            onClick={() => navigate("/services/form")}
+            onClick={() => navigate("/services")}
           >
             Get Started
           </button>
