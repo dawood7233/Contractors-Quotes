@@ -94,7 +94,7 @@ const NavBar = () => {
         {menuOpen && (
           <div
             ref={menuRef}
-            className="absolute top-16 left-0 w-full bg-[#1f2020] text-base-100 z-10 shadow-lg"
+            className="absolute top-16 left-0 w-full bg-[#1f2020] w-60 text-base-100 z-10 shadow-lg"
           >
             <ul className="menu p-4">
               <li>
@@ -281,7 +281,11 @@ const NavBar = () => {
             <li>
               <a
                 href="/aboutUs"
-                className="hover:text-[#ffb000] hover-underline-animation"
+                className={`hover:text-[#ffb000] hover-underline-animation ${
+                  isActiveLink("/aboutUs")
+                    ? "text-[#ffb000] active-underline"
+                    : ""
+                }`}
               >
                 About Us
               </a>

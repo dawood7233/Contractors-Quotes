@@ -282,7 +282,7 @@ const ServiceDetails = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="btn btn-primary w-full bg-primary text-black hover:bg-blue-600"
+              className="btn btn-primary w-full bg-primary text-black hover:amber-300"
             >
               Submit
             </button>
@@ -298,7 +298,7 @@ const ServiceDetails = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Step 1 */}
             <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
-              <div className="text-6xl text-blue-500 mb-4">📝</div>
+              <div className="text-6xl text-amber-300 mb-4">📝</div>
               <h3 className="text-xl font-bold mb-2">
                 Complete The Short Form
               </h3>
@@ -309,7 +309,7 @@ const ServiceDetails = () => {
             </div>
             {/* Step 2 */}
             <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
-              <div className="text-6xl text-teal-500 mb-4">🔍</div>
+              <div className="text-6xl text-amber-300 mb-4">🔍</div>
               <h3 className="text-xl font-bold mb-2">
                 Find Home Service Professionals
               </h3>
@@ -319,7 +319,7 @@ const ServiceDetails = () => {
             </div>
             {/* Step 3 */}
             <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
-              <div className="text-6xl text-blue-500 mb-4">🏠</div>
+              <div className="text-6xl text-amber-300 mb-4">🏠</div>
               <h3 className="text-xl font-bold mb-2">Local Pro In Your Area</h3>
               <p className="text-gray-600">
                 Enter your project details, and we will match you with the best
