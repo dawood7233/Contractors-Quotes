@@ -94,7 +94,7 @@ const NavBar = () => {
         {menuOpen && (
           <div
             ref={menuRef}
-            className="absolute top-16 left-0 w-full bg-[#1f2020] w-60 text-base-100 z-10 shadow-lg"
+            className="absolute top-16 left-0 bg-[#1f2020] w-60 text-base-100 z-10 shadow-lg rounded-xl"
           >
             <ul className="menu p-4">
               <li>
