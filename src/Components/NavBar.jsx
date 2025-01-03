@@ -1,28 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; 
+import { useNavigate, useLocation } from "react-router-dom";
 import { allServices } from "../Components/servicesData";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false); 
-  const [servicesSubmenuOpen, setServicesSubmenuOpen] = useState(false); 
-  const menuRef = useRef(null); 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesSubmenuOpen, setServicesSubmenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
-  
-// Function to determine if the current page matches the link path
-const isActiveLink = (path) => location.pathname === path;
+  // Function to determine if the current page matches the link path
+  const isActiveLink = (path) => location.pathname === path;
 
   // Toggle main menu visibility
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
+    e.stopPropagation(); 
     setMenuOpen(!menuOpen);
-    setServicesSubmenuOpen(false); 
-  };
-  // Toggle menu for closing the menu after touching the cross
-  const toggleMenuClose = () => {
-    setMenuOpen(menuOpen);
     setServicesSubmenuOpen(false);
-
-  }
+  };
 
   // Toggle services submenu visibility
   const toggleServicesSubmenu = () =>
@@ -31,7 +25,11 @@ const isActiveLink = (path) => location.pathname === path;
   // Close the menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        !event.target.closest(".btn-ghost") 
+      ) {
         setMenuOpen(false);
         setServicesSubmenuOpen(false);
       }
@@ -49,7 +47,7 @@ const isActiveLink = (path) => location.pathname === path;
         <div className="navbar-start">
           {/* Mobile Menu (Hamburger Icon) */}
           <div className="md:hidden">
-            <button  className="btn btn-ghost" >
+            <button className="btn btn-ghost" onClick={toggleMenu}>
               {menuOpen ? (
                 // Cross Icon (close the menu)
                 <svg
@@ -58,7 +56,6 @@ const isActiveLink = (path) => location.pathname === path;
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  onClick={toggleMenuClose}
                 >
                   <path
                     strokeLinecap="round"
@@ -75,7 +72,6 @@ const isActiveLink = (path) => location.pathname === path;
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  onClick={toggleMenu} 
                 >
                   <path
                     strokeLinecap="round"
@@ -124,7 +120,9 @@ const isActiveLink = (path) => location.pathname === path;
                   </a>
                   <button
                     onClick={toggleServicesSubmenu}
-                    className={isActiveLink("/services") ? "text-[#ffb000]" : ""}
+                    className={
+                      isActiveLink("/services") ? "text-[#ffb000]" : ""
+                    }
                   >
                     {servicesSubmenuOpen ? (
                       <svg
@@ -219,14 +217,20 @@ const isActiveLink = (path) => location.pathname === path;
             <li>
               <a
                 href="/"
-                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/") ? "text-[#ffb000] active-underline" : ""}`}
+                className={`hover:text-[#ffb000] hover-underline-animation ${
+                  isActiveLink("/") ? "text-[#ffb000] active-underline" : ""
+                }`}
               >
                 Home
               </a>
             </li>
             <li className="relative group">
               <a
-                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/services") ? "text-[#ffb000] active-underline" : ""}`}
+                className={`hover:text-[#ffb000] hover-underline-animation ${
+                  isActiveLink("/services")
+                    ? "text-[#ffb000] active-underline"
+                    : ""
+                }`}
                 href="/services"
               >
                 Services
@@ -251,7 +255,11 @@ const isActiveLink = (path) => location.pathname === path;
             <li>
               <a
                 href="/contact"
-                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/contact") ? "text-[#ffb000] active-underline" : ""}`}
+                className={`hover:text-[#ffb000] hover-underline-animation ${
+                  isActiveLink("/contact")
+                    ? "text-[#ffb000] active-underline"
+                    : ""
+                }`}
               >
                 Contact
               </a>
@@ -259,7 +267,11 @@ const isActiveLink = (path) => location.pathname === path;
             <li>
               <a
                 href="/projects"
-                className={`hover:text-[#ffb000] hover-underline-animation ${isActiveLink("/projects") ? "text-[#ffb000] active-underline" : ""}`}
+                className={`hover:text-[#ffb000] hover-underline-animation ${
+                  isActiveLink("/projects")
+                    ? "text-[#ffb000] active-underline"
+                    : ""
+                }`}
               >
                 Projects
               </a>
