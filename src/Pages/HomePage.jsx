@@ -7,13 +7,32 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState("");
+  const [zipCode, setZipCode] = useState(""); // State for Zip Code input
   const navigate = useNavigate();
 
-  const projectTypes = allServices.map((service) => service.title);
+  const projectTypes = allServices.map((service) => ({
+    title: service.title,
+    id: service.id, // Include ID for navigation
+  }));
 
+  // Handle selection from dropdown
   const handleSelect = (type) => {
     setSelectedProject(type);
     setIsDropdownOpen(false); // Close dropdown after selection
+  };
+
+  // Handle navigation on Get Quote button click
+  const handleGetQuote = () => {
+    const selectedService = projectTypes.find(
+      (service) => service.title === selectedProject
+    );
+    if (selectedService) {
+      navigate(`/services/${selectedService.id}`, {
+        state: { title: selectedService.title, zipCode: zipCode || null },
+      });
+    } else {
+      alert("Please select a valid project type.");
+    }
   };
 
   return (
@@ -44,13 +63,13 @@ const HomePage = () => {
             />
             {isDropdownOpen && (
               <ul className="absolute top-12 left-0 w-full bg-[#2c2c2c] rounded-md shadow-lg z-20 max-h-64 overflow-y-auto">
-                {projectTypes.map((type, index) => (
+                {projectTypes.map((type) => (
                   <li
-                    key={index}
+                    key={type.id}
                     className="px-4 py-2 hover:bg-[#383838] hover:text-[#ffb000] cursor-pointer text-white"
-                    onClick={() => handleSelect(type)}
+                    onClick={() => handleSelect(type.title)}
                   >
-                    {type}
+                    {type.title}
                   </li>
                 ))}
               </ul>
@@ -61,18 +80,16 @@ const HomePage = () => {
           <input
             type="text"
             placeholder="Zip Code"
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
             className="input input-bordered w-full"
           />
 
           {/* Button */}
           <div className="card-actions justify-end">
             <button
-              className="btn btn-primary"
-              onClick={() =>
-                navigate(`/services/${service.id}`, {
-                  state: { title: service.title },
-                })
-              }
+              className="btn w-full bg-[#ffb000] hover:bg-[#ffa600] text-black font-semibold"
+              onClick={handleGetQuote}
             >
               Get Quote
             </button>

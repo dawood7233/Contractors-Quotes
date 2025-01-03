@@ -8,9 +8,10 @@ import Contact from "./Pages/Contact";
 import Projects from "./Pages/Projects";
 import Footer from "./Components/Footer";
 import ServiceDetails from "./Components/ServiceDetails";
-import PrivacyPloicy from "./Components/PrivacyPolicy"
+import PrivacyPloicy from "./Pages/PrivacyPolicy"
 import arrowImage from "/Arrow.png"; 
-import CaliforniaPrivacyNotice from "./Components/CaliforniaPrivacyNotice";
+import CaliforniaPrivacyNotice from "./Pages/CaliforniaPrivacyNotice";
+import UserTerms from "./Pages/UserTerms"
 
 function App() {
   const [showScroll, setShowScroll] = useState(false);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/privacyPolicy" element={<PrivacyPloicy />} />
           <Route path="/californiaPrivacy" element={<CaliforniaPrivacyNotice />} />
+          <Route path="/userTerms" element={<UserTerms />} />
         </Routes>
       </div>
       <Footer />
