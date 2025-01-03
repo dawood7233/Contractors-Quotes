@@ -13,7 +13,7 @@ const NavBar = () => {
 
   // Toggle main menu visibility
   const toggleMenu = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     setMenuOpen(!menuOpen);
     setServicesSubmenuOpen(false);
   };
@@ -28,7 +28,7 @@ const NavBar = () => {
       if (
         menuRef.current &&
         !menuRef.current.contains(event.target) &&
-        !event.target.closest(".btn-ghost") 
+        !event.target.closest(".btn-ghost")
       ) {
         setMenuOpen(false);
         setServicesSubmenuOpen(false);
@@ -162,8 +162,10 @@ const NavBar = () => {
                     {allServices.map((service) => (
                       <li key={service.id}>
                         <a
-                          onClick={() => {
-                            toggleMenu();
+                          onClick={(e) => {
+                            e.preventDefault(); // Prevents the default anchor behavior
+                            setMenuOpen(false); // Ensures the menu closes
+                            setServicesSubmenuOpen(false); // Ensures the submenu closes
                             navigate(`/services/${service.id}`, {
                               state: { title: service.title },
                             });
