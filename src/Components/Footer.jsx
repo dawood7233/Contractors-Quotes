@@ -5,11 +5,9 @@ const Footer = () => {
     <div>
       <footer className="footer bg-black text-base-200 p-10 ">
         <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Solar</a>
-          <a className="link link-hover">Windows</a>
-          <a className="link link-hover">Flooring</a>
-          <a className="hover-underline-animation">Kitchen</a>
+          <a href="/" className="">
+            <img className="h-14 lg:h-16 pl-3" src="logo.png" alt="Logo" />
+          </a>
         </nav>
         <nav>
           <h6 className="footer-title">Legal</h6>

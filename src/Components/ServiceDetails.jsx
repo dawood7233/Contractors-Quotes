@@ -49,233 +49,233 @@ const ServiceDetails = () => {
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
       {/* Service Title Section */}
-      <h1 className="text-4xl font-bold text-center">
-        Service Details: {title}
-      </h1>
+      <h1 className="text-4xl font-bold text-center">{title}</h1>
 
       {/* Single Page Form */}
-      <div className="bg-white shadow-xl rounded-lg p-6 max-w-lg mx-auto mt-8">
+      <div className="bg-white shadow-xl rounded-lg p-6 max-w-4xl mx-auto mt-8">
         <form onSubmit={handleSubmit}>
-          {/* First Name */}
-          <div className="mb-4">
-            <label
-              htmlFor="firstName"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              First Name
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+            {/* First Name */}
+            <div className="mb-4">
+              <label
+                htmlFor="firstName"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                First Name
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
 
-          {/* Last Name */}
-          <div className="mb-4">
-            <label
-              htmlFor="lastName"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
+            {/* Last Name */}
+            <div className="mb-4">
+              <label
+                htmlFor="lastName"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
 
-          {/* Email */}
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
+            {/* Email */}
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
 
-          {/* Phone Number */}
-          <div className="mb-4">
-            <label
-              htmlFor="phone"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
+            {/* Phone Number */}
+            <div className="mb-4">
+              <label
+                htmlFor="phone"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
 
-          {/* Street Address */}
-          <div className="mb-4">
-            <label
-              htmlFor="streetAddress"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Street Address
-            </label>
-            <input
-              type="text"
-              id="streetAddress"
-              name="streetAddress"
-              value={formData.streetAddress}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
+            {/* Street Address */}
+            <div className="mb-4">
+              <label
+                htmlFor="streetAddress"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Street Address
+              </label>
+              <input
+                type="text"
+                id="streetAddress"
+                name="streetAddress"
+                value={formData.streetAddress}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
 
-          {/* City */}
-          <div className="mb-4">
-            <label
-              htmlFor="city"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              City
-            </label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
+            {/* City */}
+            <div className="mb-4">
+              <label
+                htmlFor="city"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                City
+              </label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
 
-          {/* State */}
-          <div className="mb-4">
-            <label
-              htmlFor="state"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              State
-            </label>
-            <select
-              id="state"
-              name="state"
-              value={formData.state}
-              onChange={handleChange}
-              className="select select-bordered w-full"
-              required
-            >
-              <option value="">Select State</option>
-              <option value="Alabama">Alabama</option>
-              <option value="Alaska">Alaska</option>
-              <option value="Arizona">Arizona</option>
-              <option value="Arkansas">Arkansas</option>
-              <option value="California">California</option>
-              <option value="Colorado">Colorado</option>
-              <option value="Connecticut">Connecticut</option>
-              <option value="Delaware">Delaware</option>
-              <option value="Florida">Florida</option>
-              <option value="Georgia">Georgia</option>
-              <option value="Hawaii">Hawaii</option>
-              <option value="Idaho">Idaho</option>
-              <option value="Illinois">Illinois</option>
-              <option value="Indiana">Indiana</option>
-              <option value="Iowa">Iowa</option>
-              <option value="Kansas">Kansas</option>
-              <option value="Kentucky">Kentucky</option>
-              <option value="Louisiana">Louisiana</option>
-              <option value="Maine">Maine</option>
-              <option value="Maryland">Maryland</option>
-              <option value="Massachusetts">Massachusetts</option>
-              <option value="Michigan">Michigan</option>
-              <option value="Minnesota">Minnesota</option>
-              <option value="Mississippi">Mississippi</option>
-              <option value="Missouri">Missouri</option>
-              <option value="Montana">Montana</option>
-              <option value="Nebraska">Nebraska</option>
-              <option value="Nevada">Nevada</option>
-              <option value="New Hampshire">New Hampshire</option>
-              <option value="New Jersey">New Jersey</option>
-              <option value="New Mexico">New Mexico</option>
-              <option value="New York">New York</option>
-              <option value="North Carolina">North Carolina</option>
-              <option value="North Dakota">North Dakota</option>
-              <option value="Ohio">Ohio</option>
-              <option value="Oklahoma">Oklahoma</option>
-              <option value="Oregon">Oregon</option>
-              <option value="Pennsylvania">Pennsylvania</option>
-              <option value="Rhode Island">Rhode Island</option>
-              <option value="South Carolina">South Carolina</option>
-              <option value="South Dakota">South Dakota</option>
-              <option value="Tennessee">Tennessee</option>
-              <option value="Texas">Texas</option>
-              <option value="Utah">Utah</option>
-              <option value="Vermont">Vermont</option>
-              <option value="Virginia">Virginia</option>
-              <option value="Washington">Washington</option>
-              <option value="West Virginia">West Virginia</option>
-              <option value="Wisconsin">Wisconsin</option>
-              <option value="Wyoming">Wyoming</option>
-            </select>
-          </div>
+            {/* State */}
+            <div className="mb-4">
+              <label
+                htmlFor="state"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                State
+              </label>
+              <select
+                id="state"
+                name="state"
+                value={formData.state}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              >
+                <option value="">Select State</option>
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Arizona">Arizona</option>
+                <option value="Arkansas">Arkansas</option>
+                <option value="California">California</option>
+                <option value="Colorado">Colorado</option>
+                <option value="Connecticut">Connecticut</option>
+                <option value="Delaware">Delaware</option>
+                <option value="Florida">Florida</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="Idaho">Idaho</option>
+                <option value="Illinois">Illinois</option>
+                <option value="Indiana">Indiana</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Kansas">Kansas</option>
+                <option value="Kentucky">Kentucky</option>
+                <option value="Louisiana">Louisiana</option>
+                <option value="Maine">Maine</option>
+                <option value="Maryland">Maryland</option>
+                <option value="Massachusetts">Massachusetts</option>
+                <option value="Michigan">Michigan</option>
+                <option value="Minnesota">Minnesota</option>
+                <option value="Mississippi">Mississippi</option>
+                <option value="Missouri">Missouri</option>
+                <option value="Montana">Montana</option>
+                <option value="Nebraska">Nebraska</option>
+                <option value="Nevada">Nevada</option>
+                <option value="New Hampshire">New Hampshire</option>
+                <option value="New Jersey">New Jersey</option>
+                <option value="New Mexico">New Mexico</option>
+                <option value="New York">New York</option>
+                <option value="North Carolina">North Carolina</option>
+                <option value="North Dakota">North Dakota</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Oklahoma">Oklahoma</option>
+                <option value="Oregon">Oregon</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <option value="Rhode Island">Rhode Island</option>
+                <option value="South Carolina">South Carolina</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Tennessee">Tennessee</option>
+                <option value="Texas">Texas</option>
+                <option value="Utah">Utah</option>
+                <option value="Vermont">Vermont</option>
+                <option value="Virginia">Virginia</option>
+                <option value="Washington">Washington</option>
+                <option value="West Virginia">West Virginia</option>
+                <option value="Wisconsin">Wisconsin</option>
+                <option value="Wyoming">Wyoming</option>
+              </select>
+            </div>
 
-          {/* Zip Code */}
-          <div className="mb-4">
-            <label
-              htmlFor="zipCode"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Zip Code
-            </label>
-            <input
-              type="text"
-              id="zipCode"
-              name="zipCode"
-              value={formData.zipCode}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
+            {/* Zip Code */}
+            <div className="mb-4">
+              <label
+                htmlFor="zipCode"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Zip Code
+              </label>
+              <input
+                type="text"
+                id="zipCode"
+                name="zipCode"
+                value={formData.zipCode}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
 
-          {/* Date */}
-          <div className="mb-4">
-            <label
-              htmlFor="date"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Date
-            </label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              required
-            />
+            {/* Date */}
+            <div className="mb-4">
+              <label
+                htmlFor="date"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Date
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+            </div>
           </div>
 
           {/* Submit Button */}
@@ -292,7 +292,7 @@ const ServiceDetails = () => {
       {/* How It Works Section */}
       <div className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-20">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          <h2 className="text-3xl font-bold text-center text-secondary mb-8">
             How It Works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

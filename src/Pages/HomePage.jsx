@@ -58,8 +58,31 @@ const HomePage = () => {
               value={selectedProject}
               readOnly
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="input input-bordered w-full cursor-pointer"
+              className="input input-bordered w-full cursor-pointer pr-10" // Add padding-right for the arrow icon
             />
+            {/* Dropdown Arrow Icon */}
+            <span
+              className={`absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer transition-transform ${
+                isDropdownOpen ? "rotate-180" : ""
+              }`}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              {/* SVG for dropdown arrow */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </span>
             {isDropdownOpen && (
               <ul className="absolute top-12 left-0 w-full bg-[#2c2c2c] rounded-md shadow-lg z-20 max-h-64 overflow-y-auto">
                 {projectTypes.map((type) => (
@@ -100,6 +123,7 @@ const HomePage = () => {
       <div className="pt-0">
         <Services visibleServices={6} />
       </div>
+
       {/* Get Started Section */}
       <div className="bg-gradient-to-r from-amber-500 to-[#1f2020] text-black py-16 px-6">
         <div className="container mx-auto text-center">

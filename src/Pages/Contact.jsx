@@ -7,15 +7,13 @@ const navigate = useNavigate();
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 pt-20">
-      {/* Contact Form Section */}
-      <div className="w-full max-w-2xl bg-white p-8 shadow-lg rounded-lg mb-8">
-        {/* Heading */}
-        <h1 className="font-bold text-4xl text-center pb-10 ">
-        Contact Us
-      </h1>
-        {/* Form */}
+      {/* Hero Section */}
+       <div className="text-black text-center">
+        <h1 className="text-4xl font-bold mb-4">Contact Us </h1>
+      </div>
+      <div className="w-full max-w-4xl bg-white p-8 shadow-lg rounded-lg mb-8">
+        
         <form>
-          {/* Top Row: Name and Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <label htmlFor="name" className="block text-sm text-[#1f2020] mb-1">

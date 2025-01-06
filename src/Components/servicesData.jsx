@@ -4,7 +4,7 @@ export const allServices = [
       title: "Solar",
       description:
         "Harness the power of the sun with our advanced solar solutions. Reduce energy costs, lower your carbon footprint, and enjoy sustainable energy tailored to your needs.",
-      image: "/solar-panel.gif", // Update with the correct path to your GIF
+      image: "/solar-panel.gif", 
     },
     {
       id: 2,
@@ -12,6 +12,7 @@ export const allServices = [
       description:
         "Enhance your home’s beauty and efficiency with our premium window services. From installations to replacements, we provide energy-saving, stylish, and durable options",
       image: "/windows.gif", 
+
     },
     {
       id: 3,
