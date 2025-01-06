@@ -5,13 +5,13 @@ import HomePage from "./Pages/HomePage";
 import AboutUs from "./Pages/AboutUs";
 import Services from "./Pages/Services";
 import Contact from "./Pages/Contact";
-import Projects from "./Pages/Projects";
 import Footer from "./Components/Footer";
 import ServiceDetails from "./Components/ServiceDetails";
 import PrivacyPloicy from "./Pages/PrivacyPolicy"
 import arrowImage from "/Arrow.png"; 
 import CaliforniaPrivacyNotice from "./Pages/CaliforniaPrivacyNotice";
 import UserTerms from "./Pages/UserTerms"
+import AutoScroll from "./Components/AutoScroll";
 
 function App() {
   const [showScroll, setShowScroll] = useState(false);
@@ -36,6 +36,7 @@ function App() {
   return (
     <Router>
       <Navbar data={{ Services }} />
+      <AutoScroll />
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -44,7 +45,6 @@ function App() {
           <Route path="/services" element={<Services data={{}} />} />
           <Route path="/services/:id" element={<ServiceDetails />} />
           <Route path="/services/form" element={<ServiceDetails />} />
-          <Route path="/projects" element={<Projects />} />
           <Route path="/privacyPolicy" element={<PrivacyPloicy />} />
           <Route path="/californiaPrivacy" element={<CaliforniaPrivacyNotice />} />
           <Route path="/userTerms" element={<UserTerms />} />

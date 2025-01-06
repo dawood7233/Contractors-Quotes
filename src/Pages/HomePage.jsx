@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import OurWork from "../Components/OurWork";
 import Services from "./Services";
 import { allServices } from "../Components/servicesData";
 import { useNavigate } from "react-router-dom";
@@ -101,10 +100,6 @@ const HomePage = () => {
       <div className="pt-0">
         <Services visibleServices={6} />
       </div>
-
-      {/* Our Projects Section */}
-      <OurWork />
-
       {/* Get Started Section */}
       <div className="bg-gradient-to-r from-amber-500 to-[#1f2020] text-black py-16 px-6">
         <div className="container mx-auto text-center">

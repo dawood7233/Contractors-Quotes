@@ -181,16 +181,6 @@ const NavBar = () => {
               </li>
               <li>
                 <a
-                  href="/projects"
-                  onClick={() => {
-                    toggleMenu();
-                  }}
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
                   href="/aboutUs"
                   onClick={() => {
                     toggleMenu();
@@ -264,18 +254,6 @@ const NavBar = () => {
                 }`}
               >
                 Contact
-              </a>
-            </li>
-            <li>
-              <a
-                href="/projects"
-                className={`hover:text-[#ffb000] hover-underline-animation ${
-                  isActiveLink("/projects")
-                    ? "text-[#ffb000] active-underline"
-                    : ""
-                }`}
-              >
-                Projects
               </a>
             </li>
             <li>
