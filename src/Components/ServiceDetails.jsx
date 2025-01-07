@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { allServices } from "./servicesData";
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -7,6 +8,9 @@ const ServiceDetails = () => {
 
   // Retrieve the service title from the state
   const title = location.state?.title || "Unknown Service";
+
+  // Find the current service inputs
+  const service = allServices.find((service) => service.title === title);
 
   // State for form fields
   const [formData, setFormData] = useState({
@@ -21,10 +25,25 @@ const ServiceDetails = () => {
     date: "",
   });
 
+  const [serviceInputs, setServiceInputs] = useState(
+    service?.inputs?.reduce((acc, input) => {
+      acc[input.question] = "";
+      return acc;
+    }, {}) || {}
+  );
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleServiceInputChange = (e) => {
+    const { name, value } = e.target;
+    setServiceInputs((prevInputs) => ({
+      ...prevInputs,
       [name]: value,
     }));
   };
@@ -44,14 +63,47 @@ const ServiceDetails = () => {
       zipCode: "",
       date: "",
     });
+    setServiceInputs(
+      service?.inputs?.reduce((acc, input) => {
+        acc[input.question] = "";
+        return acc;
+      }, {}) || {}
+    );
   };
 
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
       {/* Service Title Section */}
       <h1 className="text-4xl font-bold text-center">{title}</h1>
-
-      {/* Single Page Form */}
+      {/* Service-Specific Inputs */}
+      {service?.inputs && (
+        <div className="bg-gray-100 shadow-md rounded-lg p-6 max-w-4xl mx-auto mt-8">
+          <form>
+            {service.inputs.map((input, index) => (
+              <div className="mb-4" key={index}>
+                <label className="block text-gray-700 font-medium mb-2">
+                  {input.question}
+                </label>
+                <select
+                  name={input.question}
+                  value={serviceInputs[input.question] || ""}
+                  onChange={handleServiceInputChange}
+                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  required
+                >
+                  <option value="">Select an option</option>
+                  {input.options.map((option, idx) => (
+                    <option key={idx} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+          </form>
+        </div>
+      )}
+      ;{/* Single Page Form */}
       <div className="bg-white shadow-xl rounded-lg p-6 max-w-4xl mx-auto mt-8">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">

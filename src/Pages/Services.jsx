@@ -51,7 +51,7 @@ const Services = ({ visibleServices }) => {
               className="btn btn-primary animate-bounce"
               onClick={() => navigate("/services")}
             >
-              Show More
+              Show All
             </button>
           </div>
         )}
