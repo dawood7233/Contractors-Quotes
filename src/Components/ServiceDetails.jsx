@@ -103,7 +103,7 @@ const ServiceDetails = () => {
           </form>
         </div>
       )}
-      ;{/* Single Page Form */}
+      {/* Single Page Form */}
       <div className="bg-white shadow-xl rounded-lg p-6 max-w-4xl mx-auto mt-8">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">

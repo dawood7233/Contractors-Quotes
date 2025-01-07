@@ -18,6 +18,7 @@ export const allServices = [
           "600$",
           "700$",
           "800$",
+          "More than 900$",
         ],
       },
       {
@@ -490,20 +491,42 @@ export const allServices = [
     description:
       "Stay comfortable year-round with our HVAC services. From installation to maintenance, we optimize your heating and cooling systems for peak efficiency.",
     image: "/HVAC.gif",
-    inputs:[
+    inputs: [
       {
         question: "What is the nature of your project?",
         options: ["New", "Repair", "Replace"],
       },
       {
         question: "What type of HVAC do you need",
-        options: ["Air Ducts Repair & Replace","Boiler & Radiators-New install","Central air cleaning & maintinance","Central air-New install","Central air-Repair","Commercial Cooling","Commercial Heat-New install","Commercial Heat-Repair","Ductless Air Conditioning","Furnaces-New install","Furnaces-Repair","Gas Heat-New install","Gas Heat-Repair","Geothermal Systems","Heating-New install","Heating-Repair","Heat Pumps-New install","Heat Pumps-Repair","Oil Heat-New install","Oil Heat-Repair","Radiant Floor system","Thermostats"]
+        options: [
+          "Air Ducts Repair & Replace",
+          "Boiler & Radiators-New install",
+          "Central air cleaning & maintinance",
+          "Central air-New install",
+          "Central air-Repair",
+          "Commercial Cooling",
+          "Commercial Heat-New install",
+          "Commercial Heat-Repair",
+          "Ductless Air Conditioning",
+          "Furnaces-New install",
+          "Furnaces-Repair",
+          "Gas Heat-New install",
+          "Gas Heat-Repair",
+          "Geothermal Systems",
+          "Heating-New install",
+          "Heating-Repair",
+          "Heat Pumps-New install",
+          "Heat Pumps-Repair",
+          "Oil Heat-New install",
+          "Oil Heat-Repair",
+          "Radiant Floor system",
+          "Thermostats",
+        ],
       },
       {
         question: "Project status?",
         options: ["Ready to hire", "Planning and budgeting"],
       },
-      
     ],
   },
   {
@@ -512,15 +535,26 @@ export const allServices = [
     description:
       "Transform your space with our expert painting services. We deliver flawless finishes and vibrant colors that breathe life into your home or business.",
     image: "/painter.gif",
-    inputs:[
-      {question: "Type of painting needed",
-        options: ["Exterior painting - Trim/Shutters","Exterior painting - Whole House","Paint or Stain - Deck/Fence/Porch","Interior Painting 1-2 Rooms","Interior Painting 3+ Rooms","Wallpaper Hanging/Removal","Speciality- Faux Finishes","Speciality - Textures","Commercial","Paint Removal or Stripping"],
+    inputs: [
+      {
+        question: "Type of painting needed",
+        options: [
+          "Exterior painting - Trim/Shutters",
+          "Exterior painting - Whole House",
+          "Paint or Stain - Deck/Fence/Porch",
+          "Interior Painting 1-2 Rooms",
+          "Interior Painting 3+ Rooms",
+          "Wallpaper Hanging/Removal",
+          "Speciality- Faux Finishes",
+          "Speciality - Textures",
+          "Commercial",
+          "Paint Removal or Stripping",
+        ],
       },
       {
         question: "Project status?",
         options: ["Ready to hire", "Planning and budgeting"],
       },
-
     ],
   },
   {
@@ -529,6 +563,31 @@ export const allServices = [
     description:
       "Solve your plumbing problems with our fast and efficient services. From leaky faucets to major installations, we ensure everything flows smoothly.",
     image: "/tap.gif",
+    inputs: [
+      {
+        question: "What is the nature of your project?",
+        options: ["New", "Repair", "Replace"],
+      },
+      {
+        question: "Type of plumbing needed?",
+        options: [
+          "Basement Drainage Channel",
+          "Bathtubs",
+          "Commercial Industrial Plumbing",
+          "Faucets Fixtures Pipes",
+          "Gas pipes",
+          "General Repair",
+          "Leak Detection And Repair",
+          "Remodeling and construction",
+          "Sewer and Drain",
+          "Other",
+        ],
+      },
+      {
+        question: "Project status?",
+        options: ["Ready to hire", "Planning and budgeting"],
+      },
+    ],
   },
   {
     id: 7,
@@ -536,6 +595,20 @@ export const allServices = [
     description:
       "Keep your home safe from water damage with our seamless gutter solutions. We offer installation, repair, and cleaning services for optimal drainage.",
     image: "/Gutters.gif",
+    inputs: [
+      {
+        question: "What is the nature of your project?",
+        options: ["New", "Repair", "Replace"],
+      },
+      {
+        question: "Type of product needed",
+        options: ["Galvanized", "Seamless Metal", "PVC", "Other"],
+      },
+      {
+        question: "Project status?",
+        options: ["Ready to hire", "Planning and budgeting"],
+      },
+    ],
   },
   {
     id: 8,
@@ -543,6 +616,16 @@ export const allServices = [
     description:
       "Secure your peace of mind with our advanced home security systems. Protect your loved ones with cutting-edge technology and professional installation.",
     image: "/home Security.gif",
+    inputs: [
+      {
+        question: "Type of service needed",
+        options: [
+          "Equipment Only",
+          "New System Installation",
+          "Reactivating The Existing System",
+        ],
+      },
+    ],
   },
   {
     id: 9,
@@ -550,6 +633,28 @@ export const allServices = [
     description:
       "Create your dream kitchen with our expert remodeling and installation services. We blend functionality and style to make your culinary space extraordinary.",
     image: "/kitchen.gif",
+    inputs: [
+      {
+        question: "What is the nature of your project?",
+        options: ["New Kitchen", "Repair Kitchen", "Replace Kitchen"],
+      },
+      {
+        question: "Type of remodeling needed?",
+        options: [
+          "Appliances",
+          "Cabinets",
+          "Cabinet Repair",
+          "Counter Tops or Sinks",
+          "Floor Plan",
+          "Flooring",
+          "Full Kitchen",
+        ],
+      },
+      {
+        question: "Project status?",
+        options: ["Ready to hire", "Planning and budgeting"],
+      },
+    ],
   },
   {
     id: 10,
@@ -557,6 +662,33 @@ export const allServices = [
     description:
       "Enhance your home’s curb appeal and durability with our top-quality siding services. Choose from a variety of styles and materials for lasting beauty.",
     image: "/siding.gif",
+    inputs: [
+      {
+        question: "What is the nature of your project?",
+        options: ["New", "Repair", "Replace"],
+      },
+      {
+        question: "What type of project",
+        options: [
+          "Aluminium - Install/Replace",
+          "Aluminium Repair",
+          "BrickFace Install/Replace",
+          "BrickFace Repair",
+          "Composite Wood - Install/Replace",
+          " Composite Wood - Repair",
+          "StoneFace- Install/Replace",
+          "StoneFace- Repair",
+          "Stucco- Install/Replace",
+          "Stucco - Repair",
+          "Vinyl- Install/Replace",
+          "Vinyl-Repair",
+        ],
+      },
+      {
+        question: "Project status?",
+        options: ["Ready to hire", "Planning and budgeting"],
+      },
+    ],
   },
   {
     id: 11,
@@ -564,6 +696,32 @@ export const allServices = [
     description:
       "Revitalize your bathroom with our modern renovation solutions. From luxurious upgrades to practical fixes, we craft spaces that blend comfort and elegance.",
     image: "/bathroom.gif",
+    inputs: [
+      {
+        question: "What is the nature of your project?",
+        options: ["New Bath Install", "Bathroom Remodel"],
+      },
+      {
+        question: "Type of remodeling needed",
+        options: [
+          "BathTub Install",
+          "BathTub Linear Install",
+          "Cabinets",
+          "Counter Tops",
+          "Full Remodel",
+          "General Remodeling",
+          "New Florring",
+          "Shower Install",
+          "Sink Install",
+          "Toilet Install",
+          "Walk-In Tub Install",
+        ],
+      },
+      {
+        question: "Project status?",
+        options: ["Ready to hire", "Planning and budgeting"],
+      },
+    ],
   },
   {
     id: 12,
@@ -571,6 +729,31 @@ export const allServices = [
     description:
       "Define your property with our custom fencing solutions. We provide durable, stylish, and secure options to fit your needs and style.",
     image: "/fences.gif",
+    inputs: [
+      {
+        question: "Type of fencing project?",
+        options: [
+          "Wood Fence Install/Replace",
+          "Wood Fence Repair",
+          "Vinyl or PVC Fence Install/Replace",
+          "Vinyl or PVC Fence Repair",
+          "Chain Link Fence Install/Replace",
+          "Chain Link Fence Repair",
+          "Wrought Iron Fence Install/Relace",
+          "Wrought Iron Fence Repair",
+          "Aluminium Or Steel Fence Install/Replace",
+          "Aluminium Or Steel Fence Repair",
+          "Barbed Wired Fence Install/Replace",
+          "Barbed Wired Fence Repair",
+          "Electric Pet Fence Install/Replace",
+          "Electric Pet Fence Repair",
+        ],
+      },
+      {
+        question: "Project status?",
+        options: ["Ready to hire", "Planning and budgeting"],
+      },
+    ],
   },
   {
     id: 13,
@@ -578,5 +761,23 @@ export const allServices = [
     description:
       "Upgrade your home with our premium flooring services. From hardwood to tiles, we offer elegant, durable, and cost-effective solutions for every space.",
     image: "/flooring.gif",
+    inputs: [
+      {
+        question: "Floor Type?",
+        options: [
+          "Carpet - install",
+          "Carpet- Repair or Refasten",
+          "Epoxy Flooring",
+          "Hardwood Floor- Install",
+          "Laminate Floor- Install",
+          "Laminate Floor- Repair",
+          "Tile Floor- Install/Repare",
+          "Vinyl Or Linoleum Floor-Install",
+          "Vinyl Or Linoleum Floor - Repair",
+          "Wood Floor - Refinishing",
+          "Wood Floor - Repair or Partially Replace",
+        ],
+      },
+    ],
   },
 ];
