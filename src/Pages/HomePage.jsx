@@ -135,7 +135,7 @@ const HomePage = () => {
             a success.
           </p>
           <button
-            className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100"
+            className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
             onClick={() => navigate("/services")}
           >
             Get Started

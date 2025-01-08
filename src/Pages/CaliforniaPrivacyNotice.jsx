@@ -3,9 +3,9 @@ import React from "react";
 const CaliforniaPrivacyNotice = () => {
   return (
     <div className="pt-20 ">
-      <h1 className="font-bold text-4xl text-center pt-10 pb-10 bg-slate-200">
-        California Privacy Notice
-      </h1>
+     <div className="bg-gradient-to-r from-amber-400 to-secondary text-black text-center py-16 px-6 w-full hover">
+        <h1 className="text-4xl font-bold mb-4 cursor-pointer">California Privacy</h1>
+      </div>
       <div className="p-6">
         <p>
           This California Privacy Notice supplements the information contained

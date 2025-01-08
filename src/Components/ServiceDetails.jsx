@@ -74,44 +74,57 @@ const ServiceDetails = () => {
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
       {/* Service Title Section */}
-      <h1 className="text-4xl font-bold text-center">{title}</h1>
+      <h1 className="text-4xl text-center pb-3">Get a {title} Consultation!</h1>
+
+       {/* Service Image */}
+       {service?.image && (
+        <div className="text-center mb-6">
+          <img
+            src={service.image}
+            alt={`${title} service`}
+            className="mx-auto w-48 h-48 object-contain"
+          />
+        </div>
+      )}
       {/* Service-Specific Inputs */}
       {service?.inputs && (
-        <div className="bg-gray-100 shadow-md rounded-lg p-6 max-w-4xl mx-auto mt-8">
+        <div className="p-6 max-w-5xl mx-auto mt-8">
           <form>
-            {service.inputs.map((input, index) => (
-              <div className="mb-4" key={index}>
-                <label className="block text-gray-700 font-medium mb-2">
-                  {input.question}
-                </label>
-                <select
-                  name={input.question}
-                  value={serviceInputs[input.question] || ""}
-                  onChange={handleServiceInputChange}
-                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                  required
-                >
-                  <option value="">Select an option</option>
-                  {input.options.map((option, idx) => (
-                    <option key={idx} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {service.inputs.map((input, index) => (
+                <div className="mb-4" key={index}>
+                  <label className="block text-secondary font-medium mb-2">
+                    {input.question}
+                  </label>
+                  <select
+                    name={input.question}
+                    value={serviceInputs[input.question] || ""}
+                    onChange={handleServiceInputChange}
+                    className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                    required
+                  >
+                    <option value="">Select an option</option>
+                    {input.options.map((option, idx) => (
+                      <option key={idx} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </div>
           </form>
         </div>
       )}
       {/* Single Page Form */}
-      <div className="bg-white shadow-xl rounded-lg p-6 max-w-4xl mx-auto mt-8">
+      <div className=" p-6 max-w-5xl mx-auto mt-8">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
             {/* First Name */}
             <div className="mb-4">
               <label
                 htmlFor="firstName"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 First Name
               </label>
@@ -130,7 +143,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="lastName"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 Last Name
               </label>
@@ -149,7 +162,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 Email
               </label>
@@ -168,7 +181,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="phone"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 Phone Number
               </label>
@@ -187,7 +200,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="streetAddress"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 Street Address
               </label>
@@ -206,7 +219,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="city"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 City
               </label>
@@ -225,7 +238,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="state"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 State
               </label>
@@ -295,7 +308,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="zipCode"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 Zip Code
               </label>
@@ -314,7 +327,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="date"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-secondary font-medium mb-2"
               >
                 Date
               </label>
@@ -334,7 +347,7 @@ const ServiceDetails = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="btn btn-primary w-full bg-primary text-black hover:amber-300"
+              className="btn  w-full bg-primary text-black transition duration-300"
             >
               Submit
             </button>
@@ -344,36 +357,36 @@ const ServiceDetails = () => {
       {/* How It Works Section */}
       <div className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-20">
-          <h2 className="text-3xl font-bold text-center text-secondary mb-8">
+          <h2 className="text-3xl font-bold text-center text-secondary mb-8 hover:text-[#ffb000] transition duration-300">
             How It Works
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {/* Step 1 */}
-            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
+            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
               <div className="text-6xl text-amber-300 mb-4">📝</div>
               <h3 className="text-xl font-bold mb-2">
                 Complete The Short Form
               </h3>
-              <p className="text-gray-600">
+              <p className="text-secondary">
                 Answer a few easy questions regarding your project needs to get
                 matched with the services you require.
               </p>
             </div>
             {/* Step 2 */}
-            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
+            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
               <div className="text-6xl text-amber-300 mb-4">🔍</div>
               <h3 className="text-xl font-bold mb-2">
                 Find Home Service Professionals
               </h3>
-              <p className="text-gray-600">
+              <p className="text-secondary">
                 Get a competitive quote from a contractor in your area!
               </p>
             </div>
             {/* Step 3 */}
-            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
+            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
               <div className="text-6xl text-amber-300 mb-4">🏠</div>
               <h3 className="text-xl font-bold mb-2">Local Pro In Your Area</h3>
-              <p className="text-gray-600">
+              <p className="text-secondary">
                 Enter your project details, and we will match you with the best
                 local contractors.
               </p>

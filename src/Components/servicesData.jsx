@@ -778,6 +778,10 @@ export const allServices = [
           "Wood Floor - Repair or Partially Replace",
         ],
       },
+      {
+        question: "Project status?",
+        options: ["Ready to hire", "Planning and budgeting"],
+      },
     ],
   },
 ];

@@ -3,9 +3,9 @@ import React from "react";
 const PrivacyPolicy = () => {
   return (
     <div className="pt-20 ">
-      <h1 className="font-bold text-4xl text-center pt-10 pb-10 bg-slate-200">
-        Privacy Policy
-      </h1>
+     <div className="bg-gradient-to-r from-amber-400 to-secondary text-black text-center py-16 px-6 w-full hover">
+        <h1 className="text-4xl font-bold mb-4 cursor-pointer">Privacy Policy</h1>
+      </div>
       <div className="p-6">
       <p>
         PLEASE READ THIS PRIVACY POLICY CAREFULLY. BY ACCESSING OR USING THE

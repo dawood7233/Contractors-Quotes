@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AboutUs = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-gray-100 py-12">
+    <div className="bg-gray-100 pt-10">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-amber-400 to-secondary  text-black text-center py-16 px-6">
         <h1 className="text-4xl font-bold mb-4">About Us</h1>
@@ -12,7 +12,7 @@ const AboutUs = () => {
 
       {/* Why Us Section */}
       <div className="container mx-auto px-6 lg:px-20 py-12">
-        <p className="text-gray-700 text-lg leading-relaxed text-center">
+        <p className="text-secondary text-lg leading-relaxed text-center">
           Our products include a wide selection of quality services. We aim to
           deliver innovation with the addition of reliability and assurance of cost
           effectiveness. One important aspect about us is that project management
@@ -24,7 +24,7 @@ const AboutUs = () => {
       {/* How It Works Section */}
       <div className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-20">
-          <h2 className="text-3xl font-bold text-center text-secondary mb-8">
+          <h2 className="text-3xl font-bold text-center text-black mb-8 hover:text-[#ffb000] transition duration-300">
             How It Works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -32,7 +32,7 @@ const AboutUs = () => {
             <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
               <div className="text-6xl mb-4">📝</div>
               <h3 className="text-xl font-bold mb-2">Complete The Short Form</h3>
-              <p className="text-gray-600">
+              <p className="text-secondary">
                 Answer a few easy questions regarding your project needs to get
                 matched with the services you require.
               </p>

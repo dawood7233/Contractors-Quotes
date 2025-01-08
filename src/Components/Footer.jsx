@@ -30,7 +30,7 @@ const Footer = () => {
         </nav>
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by ContractorNow Ltd
+            Copyright © {new Date().getFullYear()} - All right reserved by TheContractorNow Ltd
           </p>
         </aside>
       </footer>

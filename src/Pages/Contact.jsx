@@ -1,22 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Contact = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100 pt-20">
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 pt-10">
       {/* Hero Section */}
-       <div className="text-black text-center">
-        <h1 className="text-4xl font-bold mb-4">Contact Us </h1>
+      <div className="bg-gradient-to-r from-amber-400 to-secondary text-black text-center py-16 px-6 w-full hover">
+        <h1 className="text-4xl font-bold mb-4 cursor-pointer">Contact Us</h1>
       </div>
-      <div className="w-full max-w-4xl bg-white p-8 shadow-lg rounded-lg mb-8">
-        
+      <div className="w-full max-w-4xl p-8  mb-8">
         <form>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label htmlFor="name" className="block text-sm text-[#1f2020] mb-1">
+              <label
+                htmlFor="name"
+                className="block text-sm text-[#1f2020] mb-1"
+              >
                 Your Name
               </label>
               <input
@@ -28,7 +29,10 @@ const navigate = useNavigate();
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm text-[#1f2020] mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm text-[#1f2020] mb-1"
+              >
                 Your Email
               </label>
               <input
@@ -43,7 +47,10 @@ const navigate = useNavigate();
 
           {/* Subject */}
           <div className="mb-4">
-            <label htmlFor="subject" className="block text-sm text-[#1f2020] mb-1">
+            <label
+              htmlFor="subject"
+              className="block text-sm text-[#1f2020] mb-1"
+            >
               Subject
             </label>
             <input
@@ -57,7 +64,10 @@ const navigate = useNavigate();
 
           {/* Message */}
           <div className="mb-6">
-            <label htmlFor="message" className="block text-sm text- mb-1 text-[#1f2020]">
+            <label
+              htmlFor="message"
+              className="block text-sm text- mb-1 text-[#1f2020]"
+            >
               Message
             </label>
             <textarea
