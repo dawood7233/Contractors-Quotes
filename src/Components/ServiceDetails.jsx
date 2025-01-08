@@ -26,6 +26,11 @@ const ServiceDetails = () => {
       acc[input.question] = ""; // Add service-specific questions to formData
       return acc;
     }, {}) || {}),
+    HomeOwner: "",
+    PropertyType: "",
+    PurchaseTimeFrame: "",
+    BestTimeToCall: "",
+    "Brief data about requirements": "",
   });
 
   const handleChange = (e) => {
@@ -47,7 +52,7 @@ const ServiceDetails = () => {
     //   .then(response => console.log("Success:", response))
     //   .catch(error => console.error("Error:", error));
 
-    alert("Form submitted successfully!");
+    alert("Submitted successfully!");
 
     // Reset formData state
     setFormData({
@@ -64,6 +69,11 @@ const ServiceDetails = () => {
         acc[input.question] = ""; // Reset service-specific inputs
         return acc;
       }, {}) || {}),
+      HomeOwner: "",
+      PropertyType: "",
+      PurchaseTimeFrame: "",
+      BestTimeToCall: "",
+      "Brief data about requirements": "",
     });
   };
 
@@ -339,6 +349,114 @@ const ServiceDetails = () => {
             </div>
           </div>
           <h1 className="text-4xl text-center pb-3">Few More Things</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+            <div className="mb-4">
+              <label
+                htmlFor="HomeOwner"
+                className="block text-secondary font-medium mb-2"
+              >
+                Home Owner:
+              </label>
+              <select
+                name="Property Type?"
+                value={formData["HomeOwner"]}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              >
+                <option value="">Select an option</option>
+                <option value="Commercial">Yes</option>
+                <option value="Multi-Unit">No</option>
+              </select>
+            </div>
+
+            {/* Property Type */}
+            <div className="mb-4">
+              <label
+                htmlFor="PropertyType"
+                className="block text-secondary font-medium mb-2"
+              >
+                Property Type?
+              </label>
+              <select
+                name="Property Type?"
+                value={formData["PropertyType"]}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              >
+                <option value="">Select an option</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Multi-Unit">Multi-Unit</option>
+                <option value="Residential">Residential</option>
+              </select>
+            </div>
+
+            {/* Purchase Timeframe */}
+            <div className="mb-4">
+              <label
+                htmlFor="PurchaseTimeFrame"
+                className="block text-secondary font-medium mb-2"
+              >
+                Purchase TimeFrame
+              </label>
+              <select
+                name="Purchase TimeFrame"
+                value={formData["PurchaseTimeFrame"]}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              >
+                <option value="">Select an option</option>
+                <option value="1-2 weeks">1-2 weeks</option>
+                <option value="3-4 weeks">3-4 weeks</option>
+                <option value="5-6 weeks">5-6 weeks</option>
+                <option value="7-8 weeks">7-8 weeks</option>
+                <option value="Time Is Flexible">Time Is Flexible</option>
+              </select>
+            </div>
+
+            {/* Best Time to Call */}
+            <div className="mb-4">
+              <label
+                htmlFor="BestTimeToCall"
+                className="block text-secondary font-medium mb-2"
+              >
+                What is the best time to call you?
+              </label>
+              <select
+                name="What is the best time to call you?"
+                value={formData["BestTimeToCall"]}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              >
+                <option value="">Select an option</option>
+                <option value="Anytime">Anytime</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+              </select>
+            </div>
+
+            {/* Brief Description */}
+            <div className="mb-4 col-span-2">
+              <label
+                htmlFor="Brief data about requirements"
+                className="block text-secondary font-medium mb-2"
+              >
+                Tell us about your service requirement in brief
+              </label>
+              <textarea
+                name="Tell us about your service requirement in brief"
+                value={formData["Brief data about requirements"]}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                rows="4"
+                required
+              />
+            </div>
+          </div>
           {/* Submit Button */}
           <div className="text-center">
             <button
