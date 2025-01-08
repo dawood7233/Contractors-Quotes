@@ -3,7 +3,6 @@ import { useParams, useLocation } from "react-router-dom";
 import { allServices } from "./servicesData";
 
 const ServiceDetails = () => {
-  const { id } = useParams();
   const location = useLocation();
 
   // Retrieve the service title from the state
@@ -12,7 +11,7 @@ const ServiceDetails = () => {
   // Find the current service inputs
   const service = allServices.find((service) => service.title === title);
 
-  // State for form fields
+  // State for all form fields (including service-specific inputs)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -23,14 +22,11 @@ const ServiceDetails = () => {
     state: "",
     zipCode: "",
     date: "",
-  });
-
-  const [serviceInputs, setServiceInputs] = useState(
-    service?.inputs?.reduce((acc, input) => {
-      acc[input.question] = "";
+    ...(service?.inputs?.reduce((acc, input) => {
+      acc[input.question] = ""; // Add service-specific questions to formData
       return acc;
-    }, {}) || {}
-  );
+    }, {}) || {}),
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,18 +36,20 @@ const ServiceDetails = () => {
     }));
   };
 
-  const handleServiceInputChange = (e) => {
-    const { name, value } = e.target;
-    setServiceInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Log consolidated formData to the console
     console.log("Form Data Submitted:", formData);
+
+    // Example API call with axios (if implemented)
+    // axios.post("/api/submit", formData)
+    //   .then(response => console.log("Success:", response))
+    //   .catch(error => console.error("Error:", error));
+
     alert("Form submitted successfully!");
+
+    // Reset formData state
     setFormData({
       firstName: "",
       lastName: "",
@@ -62,22 +60,19 @@ const ServiceDetails = () => {
       state: "",
       zipCode: "",
       date: "",
-    });
-    setServiceInputs(
-      service?.inputs?.reduce((acc, input) => {
-        acc[input.question] = "";
+      ...(service?.inputs?.reduce((acc, input) => {
+        acc[input.question] = ""; // Reset service-specific inputs
         return acc;
-      }, {}) || {}
-    );
+      }, {}) || {}),
+    });
   };
 
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
       {/* Service Title Section */}
-      <h1 className="text-4xl text-center pb-3">Get a {title} Consultation!</h1>
-
-       {/* Service Image */}
-       {service?.image && (
+      <h1 className="text-4xl text-center pb-3">Get A {title} Consultation!</h1>
+      {/* Service Image */}
+      {service?.image && (
         <div className="text-center mb-6">
           <img
             src={service.image}
@@ -98,8 +93,8 @@ const ServiceDetails = () => {
                   </label>
                   <select
                     name={input.question}
-                    value={serviceInputs[input.question] || ""}
-                    onChange={handleServiceInputChange}
+                    value={formData[input.question] || ""}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                     required
                   >
@@ -116,6 +111,7 @@ const ServiceDetails = () => {
           </form>
         </div>
       )}
+      <h1 className="text-4xl text-center pb-3">Tell Us More About You</h1>{" "}
       {/* Single Page Form */}
       <div className=" p-6 max-w-5xl mx-auto mt-8">
         <form onSubmit={handleSubmit}>
@@ -342,7 +338,7 @@ const ServiceDetails = () => {
               />
             </div>
           </div>
-
+          <h1 className="text-4xl text-center pb-3">Few More Things</h1>
           {/* Submit Button */}
           <div className="text-center">
             <button
