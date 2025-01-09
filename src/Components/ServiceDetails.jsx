@@ -11,6 +11,9 @@ const ServiceDetails = () => {
   // Find the current service inputs
   const service = allServices.find((service) => service.title === title);
 
+  // error handling state for the agreement
+  const [showError, setShowError] = useState(false);
+
   // State for all form fields (including service-specific inputs)
   const [formData, setFormData] = useState({
     firstName: "",
@@ -31,6 +34,7 @@ const ServiceDetails = () => {
     PurchaseTimeFrame: "",
     BestTimeToCall: "",
     "Brief data about requirements": "",
+    agreement: "",
   });
 
   const handleChange = (e) => {
@@ -74,6 +78,7 @@ const ServiceDetails = () => {
       PurchaseTimeFrame: "",
       BestTimeToCall: "",
       "Brief data about requirements": "",
+      agreement: "",
     });
   };
 
@@ -124,7 +129,7 @@ const ServiceDetails = () => {
       )}
       <h1 className="text-3xl text-center pb-2">Tell Us More About You</h1>{" "}
       {/* Single Page Form */}
-      <div className=" p-4 max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
             {/* First Name */}
@@ -349,7 +354,8 @@ const ServiceDetails = () => {
               />
             </div>
           </div>
-          <div className=" max-w-5xl mx-auto">
+          {/* Wrapper for the form */}
+          <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl text-center mb-7">Few More Things</h1>
 
             {/* Wrapper for responsive two-column layout */}
@@ -462,16 +468,58 @@ const ServiceDetails = () => {
                 required
               />
             </div>
-          </div>
 
-          {/* Submit Button */}
-          <div className="text-center">
-            <button
-              type="submit"
-              className="btn  w-full bg-primary text-black transition duration-300"
-            >
-              Submit
-            </button>
+            {/* Checkbox for agreement */}
+            <div className="mb-4">
+              <label className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  name="agreement"
+                  checked={formData.agreement}
+                  onChange={(e) =>
+                    setFormData({ ...formData, agreement: e.target.checked })
+                  }
+                  className={`mt-1 ${
+                    !formData.agreement && showError ? "border-red-500" : ""
+                  }`}
+                />
+                <span className="text-sm text-secondary">
+                  By clicking GET YOUR QUOTE, I agree to the Terms of Service
+                  and Privacy Policy, I authorize home improvement companies,
+                  their contractors, and partner companies to contact me about
+                  home improvement offers by phone calls and text messages to
+                  the number I provided. I authorize that these marketing
+                  communications may be delivered to me using an automatic
+                  telephone dialing system or by prerecorded message. I
+                  understand that my consent is not a condition of purchase, and
+                  I may revoke that consent at any time. Mobile and data charges
+                  may apply. California Residents.
+                </span>
+              </label>
+              {!formData.agreement && showError && (
+                <p className="text-red-500 text-sm mt-2">
+                  Please check the box to proceed.
+                </p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn w-full bg-primary text-black transition duration-300"
+                onClick={(e) => {
+                  if (!formData.agreement) {
+                    e.preventDefault(); // Prevent submission
+                    setShowError(true); // Show error message
+                  } else {
+                    setShowError(false); // Clear error message
+                  }
+                }}
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>
