@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { allServices } from "./servicesData";
 
 const ServiceDetails = () => {
@@ -11,7 +11,7 @@ const ServiceDetails = () => {
   // Find the current service inputs
   const service = allServices.find((service) => service.title === title);
 
-  // error handling state for the agreement
+  // Error handling state for the agreement
   const [showError, setShowError] = useState(false);
 
   // State for all form fields (including service-specific inputs)
@@ -34,8 +34,58 @@ const ServiceDetails = () => {
     PurchaseTimeFrame: "",
     BestTimeToCall: "",
     "Brief data about requirements": "",
-    agreement: "",
+    agreement: false,
+    affid: "",
+    rid: "",
+    tid: "",
+    url: "",
+    start: "",
+    min: "",
+    ipAddress: "",
+    userAgent: "",
   });
+
+  // Fetch and set IP Address on component mount
+  useEffect(() => {
+    fetch("https://api64.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => {
+        setFormData((prevData) => ({
+          ...prevData,
+          ipAddress: data.ip,
+        }));
+      })
+      .catch((error) => console.error("Failed to fetch IP address:", error));
+
+    // Set user agent
+    setFormData((prevData) => ({
+      ...prevData,
+      userAgent: navigator.userAgent,
+    }));
+
+    // Parse URL parameters and set relevant fields
+    const urlParams = new URLSearchParams(window.location.search);
+    const affid = urlParams.get("affid") || "";
+    const rid = urlParams.get("rid") || "";
+    const tid = urlParams.get("tid") || "";
+
+    setFormData((prevData) => ({
+      ...prevData,
+      affid,
+      rid,
+      tid,
+      url: window.location.href,
+    }));
+
+    // Set start time and minute
+    const start = new Date().getTime();
+    const min = Math.floor(start / 60000);
+    setFormData((prevData) => ({
+      ...prevData,
+      start,
+      min,
+    }));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +97,13 @@ const ServiceDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!formData.agreement) {
+      setShowError(true);
+      return;
+    }
+
+    setShowError(false);
 
     // Log consolidated formData to the console
     console.log("Form Data Submitted:", formData);
@@ -78,7 +135,15 @@ const ServiceDetails = () => {
       PurchaseTimeFrame: "",
       BestTimeToCall: "",
       "Brief data about requirements": "",
-      agreement: "",
+      agreement: false,
+      affid: "",
+      rid: "",
+      tid: "",
+      url: "",
+      start: "",
+      min: "",
+      ipAddress: formData.ipAddress, // Preserve IP address
+      userAgent: formData.userAgent, // Preserve user agent
     });
   };
 
