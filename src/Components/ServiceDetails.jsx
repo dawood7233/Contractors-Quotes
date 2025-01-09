@@ -80,20 +80,20 @@ const ServiceDetails = () => {
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
       {/* Service Title Section */}
-      <h1 className="text-4xl text-center pb-3">Get A {title} Consultation!</h1>
+      <h1 className="text-3xl text-center pb-1">Get A {title} Consultation!</h1>
       {/* Service Image */}
       {service?.image && (
-        <div className="text-center mb-6">
+        <div className="text-center">
           <img
             src={service.image}
             alt={`${title} service`}
-            className="mx-auto w-48 h-48 object-contain"
+            className="mx-auto w-32 h-32 object-contain"
           />
         </div>
       )}
       {/* Service-Specific Inputs */}
       {service?.inputs && (
-        <div className="p-6 max-w-5xl mx-auto mt-8">
+        <div className="p-6 max-w-4xl mx-auto mt-2">
           <form>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {service.inputs.map((input, index) => (
@@ -121,16 +121,16 @@ const ServiceDetails = () => {
           </form>
         </div>
       )}
-      <h1 className="text-4xl text-center pb-3">Tell Us More About You</h1>{" "}
+      <h1 className="text-3xl text-center pb-3">Tell Us More About You</h1>{" "}
       {/* Single Page Form */}
-      <div className=" p-6 max-w-5xl mx-auto mt-8">
+      <div className=" p-4 max-w-4xl mx-auto">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
             {/* First Name */}
-            <div className="mb-4">
+            <div className="mb-1">
               <label
                 htmlFor="firstName"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 First Name
               </label>
@@ -149,7 +149,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="lastName"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 Last Name
               </label>
@@ -168,7 +168,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 Email
               </label>
@@ -187,7 +187,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="phone"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 Phone Number
               </label>
@@ -206,7 +206,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="streetAddress"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 Street Address
               </label>
@@ -225,7 +225,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="city"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 City
               </label>
@@ -244,7 +244,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="state"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 State
               </label>
@@ -314,7 +314,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="zipCode"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 Zip Code
               </label>
@@ -333,7 +333,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="date"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
                 Date
               </label>
@@ -348,115 +348,121 @@ const ServiceDetails = () => {
               />
             </div>
           </div>
-          <h1 className="text-4xl text-center pb-3">Few More Things</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <div className="mb-4">
-              <label
-                htmlFor="HomeOwner"
-                className="block text-secondary font-medium mb-2"
-              >
-                Home Owner:
-              </label>
-              <select
-                name="Property Type?"
-                value={formData["HomeOwner"]}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                required
-              >
-                <option value="">Select an option</option>
-                <option value="Commercial">Yes</option>
-                <option value="Multi-Unit">No</option>
-              </select>
+          <div className="p-6 max-w-5xl mx-auto mt-8">
+            <h1 className="text-3xl text-center mb-7">Few More Things</h1>
+
+            {/* Wrapper for responsive two-column layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Home Owner */}
+              <div className="mb-4">
+                <label
+                  htmlFor="HomeOwner"
+                  className="block text-secondary font-medium"
+                >
+                  Home Owner:
+                </label>
+                <select
+                  name="HomeOwner"
+                  value={formData["HomeOwner"]}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  required
+                >
+                  <option value="">Select an option</option>
+                  <option value="Commercial">Yes</option>
+                  <option value="Multi-Unit">No</option>
+                </select>
+              </div>
+
+              {/* Property Type */}
+              <div className="mb-4">
+                <label
+                  htmlFor="PropertyType"
+                  className="block text-secondary font-medium"
+                >
+                  Property Type?
+                </label>
+                <select
+                  name="PropertyType"
+                  value={formData["PropertyType"]}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  required
+                >
+                  <option value="">Select an option</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Multi-Unit">Multi-Unit</option>
+                  <option value="Residential">Residential</option>
+                </select>
+              </div>
+
+              {/* Purchase Timeframe */}
+              <div className="mb-4">
+                <label
+                  htmlFor="PurchaseTimeFrame"
+                  className="block text-secondary font-medium"
+                >
+                  Purchase TimeFrame
+                </label>
+                <select
+                  name="PurchaseTimeFrame"
+                  value={formData["PurchaseTimeFrame"]}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  required
+                >
+                  <option value="">Select an option</option>
+                  <option value="1-2 weeks">1-2 weeks</option>
+                  <option value="3-4 weeks">3-4 weeks</option>
+                  <option value="5-6 weeks">5-6 weeks</option>
+                  <option value="7-8 weeks">7-8 weeks</option>
+                  <option value="Time Is Flexible">Time Is Flexible</option>
+                </select>
+              </div>
+
+              {/* Best Time to Call */}
+              <div className="mb-4">
+                <label
+                  htmlFor="BestTimeToCall"
+                  className="block text-secondary font-medium"
+                >
+                  What is the best time to call you?
+                </label>
+                <select
+                  name="BestTimeToCall"
+                  value={formData["BestTimeToCall"]}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  required
+                >
+                  <option value="">Select an option</option>
+                  <option value="Anytime">Anytime</option>
+                  <option value="Morning">Morning</option>
+                  <option value="Afternoon">Afternoon</option>
+                  <option value="Evening">Evening</option>
+                </select>
+              </div>
             </div>
 
-            {/* Property Type */}
+            {/* Full width input for brief description */}
             <div className="mb-4">
-              <label
-                htmlFor="PropertyType"
-                className="block text-secondary font-medium mb-2"
-              >
-                Property Type?
-              </label>
-              <select
-                name="Property Type?"
-                value={formData["PropertyType"]}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                required
-              >
-                <option value="">Select an option</option>
-                <option value="Commercial">Commercial</option>
-                <option value="Multi-Unit">Multi-Unit</option>
-                <option value="Residential">Residential</option>
-              </select>
-            </div>
-
-            {/* Purchase Timeframe */}
-            <div className="mb-4">
-              <label
-                htmlFor="PurchaseTimeFrame"
-                className="block text-secondary font-medium mb-2"
-              >
-                Purchase TimeFrame
-              </label>
-              <select
-                name="Purchase TimeFrame"
-                value={formData["PurchaseTimeFrame"]}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                required
-              >
-                <option value="">Select an option</option>
-                <option value="1-2 weeks">1-2 weeks</option>
-                <option value="3-4 weeks">3-4 weeks</option>
-                <option value="5-6 weeks">5-6 weeks</option>
-                <option value="7-8 weeks">7-8 weeks</option>
-                <option value="Time Is Flexible">Time Is Flexible</option>
-              </select>
-            </div>
-
-            {/* Best Time to Call */}
-            <div className="mb-4">
-              <label
-                htmlFor="BestTimeToCall"
-                className="block text-secondary font-medium mb-2"
-              >
-                What is the best time to call you?
-              </label>
-              <select
-                name="What is the best time to call you?"
-                value={formData["BestTimeToCall"]}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                required
-              >
-                <option value="">Select an option</option>
-                <option value="Anytime">Anytime</option>
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
-              </select>
-            </div>
-
-            {/* Brief Description */}
-            <div className="mb-4 col-span-2">
               <label
                 htmlFor="Brief data about requirements"
-                className="block text-secondary font-medium mb-2"
+                className="block text-secondary font-medium"
               >
-                Tell us about your service requirement in brief
+                Tell us about your service requirements in brief
               </label>
               <textarea
-                name="Tell us about your service requirement in brief"
+                name="Brief data about requirements"
                 value={formData["Brief data about requirements"]}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary resize-none"
                 rows="4"
                 required
               />
             </div>
           </div>
+
           {/* Submit Button */}
           <div className="text-center">
             <button
