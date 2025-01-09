@@ -35,89 +35,89 @@ const HomePage = () => {
   };
 
   return (
-    <div className="relative">
-      {/* Background video */}
-      <video
-        className="w-full h-auto"
-        src="/workers.mp4"
-        type="video/mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      ></video>
+      <div className="relative">
+        {/* Background video */}
+        <video
+          className="w-full h-auto"
+          src="/workers.mp4"
+          type="video/mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video>
 
-      {/* Quote Input Section */}
-      <div className="absolute top-80 left-64 w-96 bg-[rgba(31,32,32,0.7)] hover:shadow-[2px_4px_6px_rgba(255,174,0,1)] z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl sm:block hidden">
-        <div className="card-body space-y-4">
-          {/* Dropdown Input */}
-          <div className="relative">
+        {/* Quote Input Section */}
+        <div className="absolute top-80 left-64 w-96 bg-[rgba(31,32,32,0.7)] hover:shadow-[2px_4px_6px_rgba(255,174,0,1)] z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl sm:block hidden">
+          <div className="card-body space-y-4">
+            {/* Dropdown Input */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Choose Project Type"
+                value={selectedProject}
+                readOnly
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="input input-bordered w-full cursor-pointer pr-10" // Add padding-right for the arrow icon
+              />
+              {/* Dropdown Arrow Icon */}
+              <span
+                className={`absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer transition-transform ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                {/* SVG for dropdown arrow */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+              {isDropdownOpen && (
+                <ul className="absolute top-12 left-0 w-full bg-[#2c2c2c] rounded-md shadow-lg z-20 max-h-64 overflow-y-auto">
+                  {projectTypes.map((type) => (
+                    <li
+                      key={type.id}
+                      className="px-4 py-2 hover:bg-[#383838] hover:text-[#ffb000] cursor-pointer text-white"
+                      onClick={() => handleSelect(type.title)}
+                    >
+                      {type.title}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {/* Zip Code Input */}
             <input
               type="text"
-              placeholder="Choose Project Type"
-              value={selectedProject}
-              readOnly
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="input input-bordered w-full cursor-pointer pr-10" // Add padding-right for the arrow icon
+              placeholder="Zip Code"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+              className="input input-bordered w-full"
             />
-            {/* Dropdown Arrow Icon */}
-            <span
-              className={`absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer transition-transform ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
-              {/* SVG for dropdown arrow */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+
+            {/* Button */}
+            <div className="card-actions justify-end">
+              <button
+                className="btn w-full bg-[#ffb000] hover:bg-[#ffa600] text-black font-semibold"
+                onClick={handleGetQuote}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </span>
-            {isDropdownOpen && (
-              <ul className="absolute top-12 left-0 w-full bg-[#2c2c2c] rounded-md shadow-lg z-20 max-h-64 overflow-y-auto">
-                {projectTypes.map((type) => (
-                  <li
-                    key={type.id}
-                    className="px-4 py-2 hover:bg-[#383838] hover:text-[#ffb000] cursor-pointer text-white"
-                    onClick={() => handleSelect(type.title)}
-                  >
-                    {type.title}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Zip Code Input */}
-          <input
-            type="text"
-            placeholder="Zip Code"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
-            className="input input-bordered w-full"
-          />
-
-          {/* Button */}
-          <div className="card-actions justify-end">
-            <button
-              className="btn w-full bg-[#ffb000] hover:bg-[#ffa600] text-black font-semibold"
-              onClick={handleGetQuote}
-            >
-              Get Quote
-            </button>
+                Get Quote
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Our Services Section */}
       <div className="pt-0">

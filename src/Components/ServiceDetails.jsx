@@ -80,20 +80,21 @@ const ServiceDetails = () => {
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
       {/* Service Title Section */}
-      <h1 className="text-3xl text-center pb-1">Get A {title} Consultation!</h1>
-      {/* Service Image */}
-      {service?.image && (
-        <div className="text-center">
+      {/* Service Title Section */}
+      <div className="flex items-center justify-center gap-4 pb-2">
+        <h1 className="text-3xl">Get A {title} Consultation!</h1>
+        {/* Service Image */}
+        {service?.image && (
           <img
             src={service.image}
             alt={`${title} service`}
-            className="mx-auto w-32 h-32 object-contain"
+            className="w-20 h-20 object-contain"
           />
-        </div>
-      )}
+        )}
+      </div>
       {/* Service-Specific Inputs */}
       {service?.inputs && (
-        <div className="p-6 max-w-4xl mx-auto mt-2">
+        <div className="max-w-4xl mx-auto mt-2">
           <form>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {service.inputs.map((input, index) => (
@@ -105,7 +106,7 @@ const ServiceDetails = () => {
                     name={input.question}
                     value={formData[input.question] || ""}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                    className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                     required
                   >
                     <option value="">Select an option</option>
@@ -121,7 +122,7 @@ const ServiceDetails = () => {
           </form>
         </div>
       )}
-      <h1 className="text-3xl text-center pb-3">Tell Us More About You</h1>{" "}
+      <h1 className="text-3xl text-center pb-2">Tell Us More About You</h1>{" "}
       {/* Single Page Form */}
       <div className=" p-4 max-w-4xl mx-auto">
         <form onSubmit={handleSubmit}>
@@ -140,7 +141,7 @@ const ServiceDetails = () => {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
@@ -159,7 +160,7 @@ const ServiceDetails = () => {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
@@ -178,7 +179,7 @@ const ServiceDetails = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
@@ -197,7 +198,7 @@ const ServiceDetails = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
@@ -216,7 +217,7 @@ const ServiceDetails = () => {
                 name="streetAddress"
                 value={formData.streetAddress}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
@@ -235,7 +236,7 @@ const ServiceDetails = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
@@ -253,7 +254,7 @@ const ServiceDetails = () => {
                 name="state"
                 value={formData.state}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               >
                 <option value="">Select State</option>
@@ -324,7 +325,7 @@ const ServiceDetails = () => {
                 name="zipCode"
                 value={formData.zipCode}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
@@ -343,12 +344,12 @@ const ServiceDetails = () => {
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
             </div>
           </div>
-          <div className="p-6 max-w-5xl mx-auto mt-8">
+          <div className=" max-w-5xl mx-auto">
             <h1 className="text-3xl text-center mb-7">Few More Things</h1>
 
             {/* Wrapper for responsive two-column layout */}
@@ -365,7 +366,7 @@ const ServiceDetails = () => {
                   name="HomeOwner"
                   value={formData["HomeOwner"]}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                   required
                 >
                   <option value="">Select an option</option>
@@ -386,7 +387,7 @@ const ServiceDetails = () => {
                   name="PropertyType"
                   value={formData["PropertyType"]}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                   required
                 >
                   <option value="">Select an option</option>
@@ -408,7 +409,7 @@ const ServiceDetails = () => {
                   name="PurchaseTimeFrame"
                   value={formData["PurchaseTimeFrame"]}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                   required
                 >
                   <option value="">Select an option</option>
@@ -432,7 +433,7 @@ const ServiceDetails = () => {
                   name="BestTimeToCall"
                   value={formData["BestTimeToCall"]}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                  className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                   required
                 >
                   <option value="">Select an option</option>
@@ -456,8 +457,8 @@ const ServiceDetails = () => {
                 name="Brief data about requirements"
                 value={formData["Brief data about requirements"]}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary resize-none"
-                rows="4"
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary resize-none"
+                rows="2"
                 required
               />
             </div>
