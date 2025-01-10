@@ -24,7 +24,6 @@ const ServiceDetails = () => {
     city: "",
     state: "",
     zipCode: "",
-    date: "",
     ...(service?.inputs?.reduce((acc, input) => {
       acc[input.question] = ""; // Add service-specific questions to formData
       return acc;
@@ -45,9 +44,10 @@ const ServiceDetails = () => {
     userAgent: "",
   });
 
-  // Fetch and set IP Address on component mount
+  // Fetch and set initial parameters on component mount
   useEffect(() => {
-    fetch("https://api64.ipify.org?format=json")
+    // Fetch IP Address
+    fetch("https://api.ipify.org?format=json")
       .then((response) => response.json())
       .then((data) => {
         setFormData((prevData) => ({
@@ -57,17 +57,17 @@ const ServiceDetails = () => {
       })
       .catch((error) => console.error("Failed to fetch IP address:", error));
 
-    // Set user agent
+    // Set User Agent
     setFormData((prevData) => ({
       ...prevData,
       userAgent: navigator.userAgent,
     }));
 
-    // Parse URL parameters and set relevant fields
+    // Parse URL parameters
     const urlParams = new URLSearchParams(window.location.search);
-    const affid = urlParams.get("affid") || "";
-    const rid = urlParams.get("rid") || "";
-    const tid = urlParams.get("tid") || "";
+    const affid = urlParams.get("affid") || ""; // Affiliate ID
+    const rid = urlParams.get("rid") || ""; // Reference ID
+    const tid = urlParams.get("tid") || ""; // Transaction ID
 
     setFormData((prevData) => ({
       ...prevData,
@@ -77,7 +77,7 @@ const ServiceDetails = () => {
       url: window.location.href,
     }));
 
-    // Set start time and minute
+    // Set start time and elapsed minutes
     const start = new Date().getTime();
     const min = Math.floor(start / 60000);
     setFormData((prevData) => ({
@@ -108,14 +108,9 @@ const ServiceDetails = () => {
     // Log consolidated formData to the console
     console.log("Form Data Submitted:", formData);
 
-    // Example API call with axios (if implemented)
-    // axios.post("/api/submit", formData)
-    //   .then(response => console.log("Success:", response))
-    //   .catch(error => console.error("Error:", error));
-
     alert("Submitted successfully!");
 
-    // Reset formData state
+    // Reset formData state, retaining fetched data
     setFormData({
       firstName: "",
       lastName: "",
@@ -125,9 +120,8 @@ const ServiceDetails = () => {
       city: "",
       state: "",
       zipCode: "",
-      date: "",
       ...(service?.inputs?.reduce((acc, input) => {
-        acc[input.question] = ""; // Reset service-specific inputs
+        acc[input.question] = "";
         return acc;
       }, {}) || {}),
       HomeOwner: "",
@@ -136,14 +130,14 @@ const ServiceDetails = () => {
       BestTimeToCall: "",
       "Brief data about requirements": "",
       agreement: false,
-      affid: "",
-      rid: "",
-      tid: "",
-      url: "",
-      start: "",
-      min: "",
-      ipAddress: formData.ipAddress, // Preserve IP address
-      userAgent: formData.userAgent, // Preserve user agent
+      affid: formData.affid,
+      rid: formData.rid,
+      tid: formData.tid,
+      url: formData.url,
+      start: formData.start,
+      min: formData.min,
+      ipAddress: formData.ipAddress,
+      userAgent: formData.userAgent,
     });
   };
 
@@ -399,25 +393,6 @@ const ServiceDetails = () => {
                 required
               />
             </div>
-
-            {/* Date */}
-            <div className="mb-4">
-              <label
-                htmlFor="date"
-                className="block text-secondary font-medium"
-              >
-                Date
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                required
-              />
-            </div>
           </div>
           {/* Wrapper for the form */}
           <div className="max-w-5xl mx-auto">
@@ -441,8 +416,8 @@ const ServiceDetails = () => {
                   required
                 >
                   <option value="">Select an option</option>
-                  <option value="Commercial">Yes</option>
-                  <option value="Multi-Unit">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
 
