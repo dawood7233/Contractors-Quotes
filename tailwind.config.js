@@ -1,7 +1,21 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        typing: {
+          '0%': { width: '0%' },
+          '50%': { width: '100%' },
+          '100%': { width: '0%' },
+        },
+        blink: {
+          '50%': { borderColor: 'transparent' },
+        },
+      },
+      animation: {
+        typing: 'typing 6s steps(40, end) infinite, blink 0.7s step-end infinite',
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

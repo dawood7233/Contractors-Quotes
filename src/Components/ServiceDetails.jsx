@@ -87,6 +87,26 @@ const ServiceDetails = () => {
     }));
   }, []);
 
+  // Add TrustedForm script dynamically
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src =
+      (document.location.protocol === "https:" ? "https" : "http") +
+      "://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&ping_field=xxTrustedFormPingUrl&l=" +
+      new Date().getTime() +
+      Math.random();
+    document.body.appendChild(script);
+
+    // Cleanup script on component unmount
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -247,7 +267,6 @@ const ServiceDetails = () => {
                 required
               />
             </div>
-
             {/* Phone Number */}
             <div className="mb-4">
               <label
@@ -261,10 +280,22 @@ const ServiceDetails = () => {
                 id="phone"
                 name="phone"
                 value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                required
-              />
+                onChange={(e) => {
+                  const value = e.target.value;
+
+                 // Allow only numeric input and limit to 5 characters
+                 if (/^\d{0,10}$/.test(value)) {
+                  handleChange(e); // Update the form data if valid
+                }
+              }}
+              className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+              required
+            />
+            {formData.phone.length > 11 && (
+              <p className="text-red-600 text-sm mt-1">
+              Phone num must not exceed 10 digits.
+              </p>
+            )}
             </div>
 
             {/* Street Address */}
@@ -388,10 +419,22 @@ const ServiceDetails = () => {
                 id="zipCode"
                 name="zipCode"
                 value={formData.zipCode}
-                onChange={handleChange}
+                onChange={(e) => {
+                  const value = e.target.value;
+
+                  // Allow only numeric input and limit to 5 characters
+                  if (/^\d{0,5}$/.test(value)) {
+                    handleChange(e); // Update the form data if valid
+                  }
+                }}
                 className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
+              {formData.zipCode.length > 5 && (
+                <p className="text-red-600 text-sm mt-1">
+                  Zip Code must not exceed 5 digits.
+                </p>
+              )}
             </div>
           </div>
           {/* Wrapper for the form */}

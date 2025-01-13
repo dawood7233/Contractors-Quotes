@@ -14,32 +14,34 @@ const AboutUs = () => {
       <div className="container mx-auto px-6 lg:px-20 py-12">
         <p className="text-secondary text-lg leading-relaxed text-center">
           Our products include a wide selection of quality services. We aim to
-          deliver innovation with the addition of reliability and assurance of cost
-          effectiveness. One important aspect about us is that project management
-          is one of our specialties. We pay close attention to our customers and
-          clients with a 24/7 contactable schedule.
+          deliver innovation with the addition of reliability and assurance of
+          cost effectiveness. One important aspect about us is that project
+          management is one of our specialties. We pay close attention to our
+          customers and clients with a 24/7 contactable schedule.
         </p>
       </div>
 
       {/* How It Works Section */}
       <div className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-20">
-          <h2 className="text-3xl font-bold text-center text-black mb-8 hover:text-[#ffb000] transition duration-300">
+          <h2 className="text-3xl font-bold text-center text-secondary mb-8 hover:text-[#ffb000] transition duration-300">
             How It Works
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {/* Step 1 */}
-            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
-              <div className="text-6xl mb-4">📝</div>
-              <h3 className="text-xl font-bold mb-2">Complete The Short Form</h3>
+            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
+              <div className="text-6xl text-amber-300 mb-4">📝</div>
+              <h3 className="text-xl font-bold mb-2">
+                Complete The Short Form
+              </h3>
               <p className="text-secondary">
                 Answer a few easy questions regarding your project needs to get
                 matched with the services you require.
               </p>
             </div>
             {/* Step 2 */}
-            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
-              <div className="text-6xl mb-4">🔍</div>
+            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
+              <div className="text-6xl text-amber-300 mb-4">🔍</div>
               <h3 className="text-xl font-bold mb-2">
                 Find Home Service Professionals
               </h3>
@@ -48,8 +50,8 @@ const AboutUs = () => {
               </p>
             </div>
             {/* Step 3 */}
-            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
-              <div className="text-6xl  mb-4">🏠</div>
+            <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
+              <div className="text-6xl text-amber-300 mb-4">🏠</div>
               <h3 className="text-xl font-bold mb-2">Local Pro In Your Area</h3>
               <p className="text-secondary">
                 Enter your project details, and we will match you with the best
@@ -59,7 +61,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-
       {/* Call to Action Section */}
       <div className="bg-gradient-to-r from-amber-500 to-[#1f2020] text-black py-16 px-6">
         <div className="container mx-auto text-center">
@@ -70,7 +71,10 @@ const AboutUs = () => {
             Let us connect you with the right professionals to make your project
             a success.
           </p>
-          <button className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100" onClick={()=>navigate('/services/form')}>
+          <button
+            className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100"
+            onClick={() => navigate("/services/form")}
+          >
             Get Started
           </button>
         </div>

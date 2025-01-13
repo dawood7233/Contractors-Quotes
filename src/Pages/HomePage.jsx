@@ -48,14 +48,14 @@ const HomePage = () => {
       ></video>
 
       {/* Animated Text Overlay for Mobile View */}
-      {/* <div className="inset-0 flex items-center justify-center sm:hidden z-20">
-        <h1 className="text-black text-center text-2xl sm:text-4xl font-bold animate-bounce">
-          Your one stop shop for your home services needs
+      <div className="absolute top-52 flex items-center justify-center sm:hidden z-20">
+        <h1 className="text-black text-center text-2xl sm:text-3xl font-bold overflow-hidden whitespace-nowrap border-r-4 border-black animate-typing">
+          Your one stop shop for  <span>your home services needs</span>
         </h1>
-      </div> */}
+      </div>
 
       {/* Quote Input Section */}
-      <div className="absolute top-80 left-64 w-96 bg-[rgba(31,32,32,0.7)] hover:shadow-[2px_4px_6px_rgba(255,174,0,1)] z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl sm:block hidden">
+      <div className="absolute top-64 left-52 w-90 bg-[rgba(31,32,32,0.7)] hover:shadow-[2px_4px_6px_rgba(255,174,0,1)] z-10 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl sm:block hidden md:top-80 md:left-64 md:w-96">
         <div className="card-body space-y-4">
           {/* Dropdown Input */}
           <div className="relative">
