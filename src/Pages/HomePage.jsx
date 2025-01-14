@@ -22,12 +22,22 @@ const HomePage = () => {
 
   // Handle navigation on Get Quote button click
   const handleGetQuote = () => {
+    if (!selectedProject) {
+      alert("Please select a project type.");
+      return;
+    }
+    if (!zipCode) {
+      alert("Please enter your zip code.");
+      return;
+    }
+
     const selectedService = projectTypes.find(
       (service) => service.title === selectedProject
     );
+
     if (selectedService) {
       navigate(`/services/${selectedService.id}`, {
-        state: { title: selectedService.title, zipCode: zipCode || null },
+        state: { title: selectedService.title, zipCode: zipCode },
       });
     } else {
       alert("Please select a valid project type.");

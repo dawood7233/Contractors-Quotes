@@ -7,6 +7,7 @@ const ServiceDetails = () => {
 
   // Retrieve the service title from the state
   const title = location.state?.title || "Unknown Service";
+  const passedZipCode = location.state?.zipCode || "";
 
   // Find the current service inputs
   const service = allServices.find((service) => service.title === title);
@@ -23,7 +24,7 @@ const ServiceDetails = () => {
     streetAddress: "",
     city: "",
     state: "",
-    zipCode: "",
+    zipCode: passedZipCode,
     ...(service?.inputs?.reduce((acc, input) => {
       acc[input.question] = ""; // Add service-specific questions to formData
       return acc;
