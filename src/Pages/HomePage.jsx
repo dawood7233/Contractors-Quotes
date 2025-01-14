@@ -50,7 +50,7 @@ const HomePage = () => {
 
         {/* Animated Text Overlay for Mobile View */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center sm:hidden z-20 flex-col text-white text-xl">
-          <span>Your one-stop shop for your</span>
+          <span>Your one stop for your</span>
           <h1 className="text-primary text-center text-2xl font-bold overflow-hidden whitespace-nowrap border-r-4 border-black animate-typing">
             home services needs
           </h1>
