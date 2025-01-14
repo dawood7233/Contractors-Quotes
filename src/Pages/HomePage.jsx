@@ -48,9 +48,10 @@ const HomePage = () => {
       ></video>
 
       {/* Animated Text Overlay for Mobile View */}
-      <div className="absolute top-52 flex items-center justify-center sm:hidden z-20">
-        <h1 className="text-black text-center text-2xl sm:text-3xl font-bold overflow-hidden whitespace-nowrap border-r-4 border-black animate-typing">
-          Your one stop shop for  <span>your home services needs</span>
+      <div className="absolute top-80 flex items-center justify-center sm:hidden z-20 flex-col left-40 text-white text-2xl">
+      Your one stop shop for your
+        <h1 className="text-primary text-center text-2xl sm:text-3xl font-bold overflow-hidden whitespace-nowrap border-r-4 border-black animate-typing">
+          home services needs
         </h1>
       </div>
 

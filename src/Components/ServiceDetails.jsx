@@ -46,7 +46,6 @@ const ServiceDetails = () => {
 
   // Fetch and set initial parameters on component mount
   useEffect(() => {
-    // Fetch IP Address
     fetch("https://api.ipify.org?format=json")
       .then((response) => response.json())
       .then((data) => {
@@ -57,17 +56,15 @@ const ServiceDetails = () => {
       })
       .catch((error) => console.error("Failed to fetch IP address:", error));
 
-    // Set User Agent
     setFormData((prevData) => ({
       ...prevData,
       userAgent: navigator.userAgent,
     }));
 
-    // Parse URL parameters
     const urlParams = new URLSearchParams(window.location.search);
-    const affid = urlParams.get("affid") || ""; // Affiliate ID
-    const rid = urlParams.get("rid") || ""; // Reference ID
-    const tid = urlParams.get("tid") || ""; // Transaction ID
+    const affid = urlParams.get("affid") || "";
+    const rid = urlParams.get("rid") || "";
+    const tid = urlParams.get("tid") || "";
 
     setFormData((prevData) => ({
       ...prevData,
@@ -77,7 +74,6 @@ const ServiceDetails = () => {
       url: window.location.href,
     }));
 
-    // Set start time and elapsed minutes
     const start = new Date().getTime();
     const min = Math.floor(start / 60000);
     setFormData((prevData) => ({
@@ -89,21 +85,48 @@ const ServiceDetails = () => {
 
   // Add TrustedForm script dynamically
   useEffect(() => {
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.async = true;
-    script.src =
+    const trustedFormScript = document.createElement("script");
+    trustedFormScript.type = "text/javascript";
+    trustedFormScript.async = true;
+    trustedFormScript.src =
       (document.location.protocol === "https:" ? "https" : "http") +
       "://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&ping_field=xxTrustedFormPingUrl&l=" +
       new Date().getTime() +
       Math.random();
-    document.body.appendChild(script);
+    document.body.appendChild(trustedFormScript);
 
-    // Cleanup script on component unmount
+    const trustedFormNoscript = document.createElement("noscript");
+    const img = document.createElement("img");
+    img.src = "https://api.trustedform.com/ns.gif";
+    trustedFormNoscript.appendChild(img);
+    document.body.appendChild(trustedFormNoscript);
+
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
+      document.body.removeChild(trustedFormScript);
+      document.body.removeChild(trustedFormNoscript);
+    };
+  }, []);
+
+  // Add LeadiD script dynamically
+  useEffect(() => {
+    const leadiDScript = document.createElement("script");
+    leadiDScript.id = "LeadiDscript_campaign";
+    leadiDScript.type = "text/javascript";
+    leadiDScript.async = true;
+    leadiDScript.src =
+      "//create.lidstatic.com/campaign/402848de-d8aa-7158-923b-a6a24e7956dc.js?snippet_version=2";
+    document.body.appendChild(leadiDScript);
+
+    const leadiDNoscript = document.createElement("noscript");
+    const img = document.createElement("img");
+    img.src =
+      "//create.leadid.com/noscript.gif?lac=0F8580E1-10B6-A5AB-B0DF-1A2B8CF787AF&lck=402848de-d8aa-7158-923b-a6a24e7956dc&snippet_version=2";
+    leadiDNoscript.appendChild(img);
+    document.body.appendChild(leadiDNoscript);
+
+    return () => {
+      document.body.removeChild(leadiDScript);
+      document.body.removeChild(leadiDNoscript);
     };
   }, []);
 
@@ -125,12 +148,9 @@ const ServiceDetails = () => {
 
     setShowError(false);
 
-    // Log consolidated formData to the console
     console.log("Form Data Submitted:", formData);
-
     alert("Submitted successfully!");
 
-    // Reset formData state, retaining fetched data
     setFormData({
       firstName: "",
       lastName: "",
@@ -283,19 +303,19 @@ const ServiceDetails = () => {
                 onChange={(e) => {
                   const value = e.target.value;
 
-                 // Allow only numeric input and limit to 5 characters
-                 if (/^\d{0,10}$/.test(value)) {
-                  handleChange(e); // Update the form data if valid
-                }
-              }}
-              className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-              required
-            />
-            {formData.phone.length > 11 && (
-              <p className="text-red-600 text-sm mt-1">
-              Phone num must not exceed 10 digits.
-              </p>
-            )}
+                  // Allow only numeric input and limit to 5 characters
+                  if (/^\d{0,10}$/.test(value)) {
+                    handleChange(e); // Update the form data if valid
+                  }
+                }}
+                className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                required
+              />
+              {formData.phone.length > 11 && (
+                <p className="text-red-600 text-sm mt-1">
+                  Phone num must not exceed 10 digits.
+                </p>
+              )}
             </div>
 
             {/* Street Address */}
