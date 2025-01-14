@@ -37,22 +37,24 @@ const HomePage = () => {
   return (
     <div className="relative">
       {/* Background video */}
-      <video
-        className="w-full h-auto pt-16 sm:pt-0" // Added padding-top for mobile view
-        src="/workers.mp4"
-        type="video/mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      ></video>
+      <div className="relative w-full">
+        <video
+          className="w-full h-auto pt-16 sm:pt-0" // Added padding-top for mobile view
+          src="/workers.mp4"
+          type="video/mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video>
 
-      {/* Animated Text Overlay for Mobile View */}
-      <div className="absolute top-80 flex items-center justify-center sm:hidden z-20 flex-col left-40 text-white text-2xl">
-      Your one stop shop for your
-        <h1 className="text-primary text-center text-2xl sm:text-3xl font-bold overflow-hidden whitespace-nowrap border-r-4 border-black animate-typing">
-          home services needs
-        </h1>
+        {/* Animated Text Overlay for Mobile View */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center sm:hidden z-20 flex-col text-white text-xl">
+          <span>Your one-stop shop for your</span>
+          <h1 className="text-primary text-center text-2xl font-bold overflow-hidden whitespace-nowrap border-r-4 border-black animate-typing">
+            home services needs
+          </h1>
+        </div>
       </div>
 
       {/* Quote Input Section */}
