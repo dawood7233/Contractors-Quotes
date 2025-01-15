@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="footer bg-black text-base-200 p-10 ">
         <nav>
           <a href="/" className="">
-            <img className="h-14 lg:h-16 pl-3" src="logo.png" alt="Logo" />
+            <img className="h-14 lg:h-16 pl-3" src="/assets/images/logo.png" alt="Logo" />
           </a>
         </nav>
         <nav>

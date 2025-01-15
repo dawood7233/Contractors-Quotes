@@ -3,6 +3,7 @@ import Services from "./Services";
 import { allServices } from "../Components/servicesData";
 import { useNavigate, useLocation} from "react-router-dom";
 
+
 const HomePage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState("");
@@ -51,7 +52,7 @@ const HomePage = () => {
       <div className="relative w-full">
         <video
           className="w-full h-auto pt-16 sm:pt-0" // Added padding-top for mobile view
-          src="/workers.mp4"
+          src="/assets/videos/workers.mp4"
           type="video/mp4"
           autoPlay
           loop
