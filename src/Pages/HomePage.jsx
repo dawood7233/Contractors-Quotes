@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Services from "./Services";
 import { allServices } from "../Components/servicesData";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 
 const HomePage = () => {
-  const location = useLocation();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState("");
+  const [zipCode, setZipCode] = useState(""); // State for Zip Code input
   const navigate = useNavigate();
   
-  // Restore state from location if available
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(location.state?.title || "");
-  const [zipCode, setZipCode] = useState(location.state?.zipCode || "");
 
   const projectTypes = allServices.map((service) => ({
     title: service.title,
-    id: service.id,
+    id: service.id, // Include ID for navigation
   }));
 
   // Handle selection from dropdown
@@ -52,7 +50,7 @@ const HomePage = () => {
       {/* Background video */}
       <div className="relative w-full">
         <video
-          className="w-full h-auto pt-16 sm:pt-0"
+          className="w-full h-auto pt-16 sm:pt-0" // Added padding-top for mobile view
           src="/workers.mp4"
           type="video/mp4"
           autoPlay
