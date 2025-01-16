@@ -185,7 +185,6 @@ const ServiceDetails = () => {
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
       {/* Service Title Section */}
-      {/* Service Title Section */}
       <div className="flex items-center justify-center gap-4 pb-2">
         <h1 className="text-3xl">Get A {title} Consultation!</h1>
         {/* Service Image */}

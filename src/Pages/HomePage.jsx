@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Services from "./Services";
 import { allServices } from "../Components/servicesData";
-import { useNavigate, useLocation} from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState("");
   const [zipCode, setZipCode] = useState(""); // State for Zip Code input
   const navigate = useNavigate();
-  
 
   const projectTypes = allServices.map((service) => ({
     title: service.title,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { allServices } from "../Components/servicesData";
+import { allServices } from "./servicesData";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -86,7 +86,11 @@ const NavBar = () => {
 
           {/* Logo */}
           <a href="/" className="flex items-center">
-            <img className="h-14 lg:h-16 pl-3" src="/assets/images/logo.png" alt="Logo" />
+            <img
+              className="h-14 lg:h-16 pl-3"
+              src="/assets/images/logo.png"
+              alt="Logo"
+            />
           </a>
         </div>
 
@@ -273,7 +277,10 @@ const NavBar = () => {
 
         {/* Navbar End */}
         <div className="navbar-end">
-          <a className="btn bg-primary text-black transition duration-300" href="/services">
+          <a
+            className="btn bg-primary text-black transition duration-300"
+            href="/services"
+          >
             Get Quotes
           </a>
         </div>

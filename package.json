@@ -1,6 +1,6 @@
 {
-  "name": "contractorquotes",
-  "homepage": "/cquotes",  
+  "name": "thecontractornow",
+  "homepage": "./cquotes/",  
   "private": true,
   "version": "0.0.0",
   "type": "module",

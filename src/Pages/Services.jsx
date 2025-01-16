@@ -4,7 +4,7 @@ import { allServices } from "../Components/servicesData";
 
 const Services = ({ visibleServices }) => {
   const navigate = useNavigate();
-  
+
   return (
     <div className="bg-white py-12">
       <h1 className="font-bold text-4xl text-center pt-10 pb-10 hover:text-[#ffb000] transition duration-300">
