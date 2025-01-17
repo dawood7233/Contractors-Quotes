@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { allServices } from "./servicesData";
 
 const ServiceDetails = () => {
-  const location = useLocation();
+  const { title } = useParams(); // Extract the service title from the route params
+  const decodedTitle = decodeURIComponent(title); // Decode the URL-encoded title
+  const service = allServices.find(
+    (service) => service.title.toLowerCase() === decodedTitle.toLowerCase()
+  );
 
-  // Retrieve the service title from the state
-  const title = location.state?.title || "Unknown Service";
-  const passedZipCode = location.state?.zipCode || "";
+  const passedZipCode =
+    new URLSearchParams(window.location.search).get("zip") || "";
 
-  // Find the current service inputs
-  const service = allServices.find((service) => service.title === title);
+  if (!service) {
+    return (
+      <div className="container mx-auto px-6 py-12 pt-24 text-center">
+        <h1 className="text-3xl text-red-500">Service Not Found</h1>
+        <p className="text-gray-600">
+          Please check the URL or select a valid service.
+        </p>
+      </div>
+    );
+  }
 
-  // Error handling state for the agreement
   const [showError, setShowError] = useState(false);
 
-  // State for all form fields (including service-specific inputs)
+  // Initialize form data state
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,10 +35,10 @@ const ServiceDetails = () => {
     city: "",
     state: "",
     zipCode: passedZipCode,
-    ...(service?.inputs?.reduce((acc, input) => {
+    ...service.inputs.reduce((acc, input) => {
       acc[input.question] = ""; // Add service-specific questions to formData
       return acc;
-    }, {}) || {}),
+    }, {}),
     HomeOwner: "",
     PropertyType: "",
     PurchaseTimeFrame: "",
@@ -83,7 +93,6 @@ const ServiceDetails = () => {
       min,
     }));
   }, []);
-
   // Add TrustedForm script dynamically
   useEffect(() => {
     const trustedFormScript = document.createElement("script");

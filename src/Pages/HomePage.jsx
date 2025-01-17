@@ -11,7 +11,7 @@ const HomePage = () => {
 
   const projectTypes = allServices.map((service) => ({
     title: service.title,
-    id: service.id, // Include ID for navigation
+    id: service.id,
   }));
 
   // Handle selection from dropdown
@@ -36,9 +36,8 @@ const HomePage = () => {
     );
 
     if (selectedService) {
-      navigate(`/services/${selectedService.id}`, {
-        state: { title: selectedService.title, zipCode: zipCode },
-      });
+      const encodedTitle = encodeURIComponent(selectedService.title); // Encode for safe URL usage
+      navigate(`/services/${encodedTitle}?zip=${zipCode}`);
     } else {
       alert("Please select a valid project type.");
     }

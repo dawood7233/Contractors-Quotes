@@ -73,7 +73,7 @@ const AboutUs = () => {
           </p>
           <button
             className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100"
-            onClick={() => navigate("/services/form")}
+            onClick={() => navigate("/services")}
           >
             Get Started
           </button>

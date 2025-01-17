@@ -11,27 +11,21 @@ import CaliforniaPrivacyNotice from "./Pages/CaliforniaPrivacyNotice";
 import UserTerms from "./Pages/UserTerms";
 import AutoScroll from "./Components/AutoScroll";
 import ScrollUpButton from "./Components/scrollUpButton";
-import Check from "./Components/Check";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/thecontractornow">
       <Navbar data={{ Services }} />
       <AutoScroll />
       <ScrollUpButton />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/services" element={<Services data={{}} />} />
-        <Route path="/services/:id" element={<ServiceDetails />} />
-        <Route path="/services/form" element={<ServiceDetails />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/:title" element={<ServiceDetails />} />
         <Route path="/privacyPolicy" element={<PrivacyPloicy />} />
-        <Route
-          path="/californiaPrivacy"
-          element={<CaliforniaPrivacyNotice />}
-        />
+        <Route path="/californiaPrivacy" element={<CaliforniaPrivacyNotice />} />
         <Route path="/userTerms" element={<UserTerms />} />
       </Routes>
 

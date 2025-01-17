@@ -612,7 +612,7 @@ export const allServices = [
   },
   {
     id: 8,
-    title: "Home Security",
+    title: "HomeSecurity",
     description:
       "Secure your peace of mind with our advanced home security systems. Protect your loved ones with cutting-edge technology and professional installation.",
     image: "/assets/images/home Security.gif",
