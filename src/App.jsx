@@ -14,7 +14,7 @@ import ScrollUpButton from "./Components/scrollUpButton";
 
 function App() {
   return (
-    <Router basename="/thecontractornow">
+    <Router>
       <Navbar data={{ Services }} />
       <AutoScroll />
       <ScrollUpButton />

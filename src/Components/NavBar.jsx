@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { allServices } from "./servicesData";
 
 const NavBar = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesSubmenuOpen, setServicesSubmenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -49,7 +49,6 @@ const NavBar = () => {
           <div className="md:hidden">
             <button className="btn btn-ghost" onClick={toggleMenu}>
               {menuOpen ? (
-                // Cross Icon (close the menu)
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -65,7 +64,6 @@ const NavBar = () => {
                   />
                 </svg>
               ) : (
-                // Hamburger Icon (open the menu)
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -85,13 +83,13 @@ const NavBar = () => {
           </div>
 
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img
               className="h-14 lg:h-16 pl-3"
               src="/assets/images/logo.png"
               alt="Logo"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Dropdown Menu */}
@@ -102,26 +100,26 @@ const NavBar = () => {
           >
             <ul className="menu p-4">
               <li>
-                <a
-                  href="/"
-                  onClick={() => {
-                    toggleMenu();
-                  }}
+                <Link
+                  to="/"
+                  onClick={toggleMenu}
+                  className={`${
+                    isActiveLink("/") ? "text-[#ffb000]" : "text-base-100"
+                  }`}
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <div className="flex items-center justify-between">
-                  <a
-                    href="#"
+                  <button
                     onClick={(e) => {
                       e.preventDefault();
                       toggleServicesSubmenu();
                     }}
                   >
                     Services
-                  </a>
+                  </button>
                   <button
                     onClick={toggleServicesSubmenu}
                     className={
@@ -164,44 +162,48 @@ const NavBar = () => {
                 {servicesSubmenuOpen && (
                   <ul className="pl-4">
                     {allServices.map((service) => (
-                      <li key={service.id}>
-                        <a
-                          onClick={(e) => {
-                            e.preventDefault(); // Prevents the default anchor behavior
-                            setMenuOpen(false); // Ensures the menu closes
-                            setServicesSubmenuOpen(false); // Ensures the submenu closes
-                            navigate(`/services/${service.id}`, {
-                              state: { title: service.title },
-                            });
+                      <li key={service.title}>
+                        <Link
+                          to={`/services/${service.title}`}
+                          state={{ title: service.title }}
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setServicesSubmenuOpen(false);
                           }}
-                          className="hover:text-[#ffb000]"
+                          className="hover:text-[#ffb000] text-base-100"
                         >
                           {service.title}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
                 )}
               </li>
               <li>
-                <a
-                  href="/aboutUs"
-                  onClick={() => {
-                    toggleMenu();
-                  }}
+                <Link
+                  to="/aboutUs"
+                  onClick={toggleMenu}
+                  className={`${
+                    isActiveLink("/aboutUs")
+                      ? "text-[#ffb000]"
+                      : "text-base-100"
+                  }`}
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/contact"
-                  onClick={() => {
-                    toggleMenu();
-                  }}
+                <Link
+                  to="/contact"
+                  onClick={toggleMenu}
+                  className={`${
+                    isActiveLink("/contact")
+                      ? "text-[#ffb000]"
+                      : "text-base-100"
+                  }`}
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -211,78 +213,77 @@ const NavBar = () => {
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1 text-[16px]">
             <li>
-              <a
-                href="/"
+              <Link
+                to="/"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
-                  isActiveLink("/") ? "text-[#ffb000] active-underline" : ""
+                  isActiveLink("/")
+                    ? "text-[#ffb000] active-underline "
+                    : "text-base-100"
                 }`}
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li className="relative group">
-              <a
+              <Link
+                to="/services"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
                   isActiveLink("/services")
                     ? "text-[#ffb000] active-underline"
-                    : ""
+                    : "text-base-100"
                 }`}
-                href="/services"
               >
                 Services
-              </a>
+              </Link>
               <ul className="absolute hidden group-hover:flex bg-[#1f2020] px-10 py-4 rounded-lg shadow-lg w-[350px] flex-wrap gap-4 z-20 top-full left-0">
                 {allServices.map((service) => (
-                  <li key={service.id}>
-                    <a
-                      onClick={() =>
-                        navigate(`/services/${service.id}`, {
-                          state: { title: service.title },
-                        })
-                      }
-                      className="hover:text-[#ffb000]"
+                  <li key={service.title}>
+                    <Link
+                      to={`/services/${service.title}`}
+                      state={{ title: service.title }}
+                      className="hover:text-[#ffb000] text-base-100"
                     >
                       {service.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </li>
             <li>
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
                   isActiveLink("/contact")
                     ? "text-[#ffb000] active-underline"
-                    : ""
+                    : "text-base-100"
                 }`}
               >
                 Contact
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/aboutUs"
+              <Link
+                to="/aboutUs"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
                   isActiveLink("/aboutUs")
                     ? "text-[#ffb000] active-underline"
-                    : ""
+                    : "text-base-100"
                 }`}
               >
                 About Us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         {/* Navbar End */}
         <div className="navbar-end">
-          <a
+          <Link
             className="btn bg-primary text-black transition duration-300"
-            href="/services"
+            to="/services"
           >
             Get Quotes
-          </a>
+          </Link>
         </div>
       </div>
     </div>

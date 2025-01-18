@@ -1,36 +1,37 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-black text-base-200 p-10 ">
+      <footer className="footer bg-black text-base-200 p-10">
         <nav>
-          <a href="/" className="">
+          <Link to="/" className="">
             <img className="h-14 lg:h-16 pl-3" src="/assets/images/logo.png" alt="Logo" />
-          </a>
+          </Link>
         </nav>
         <nav>
           <h6 className="footer-title">Legal</h6>
-          <a className="hover-underline-animation" href="/userTerms">Terms of use</a>
-          <a className="hover-underline-animation" href="/privacyPolicy">
+          <Link className="hover-underline-animation" to="/userTerms">Terms of use</Link>
+          <Link className="hover-underline-animation" to="/privacyPolicy">
             Privacy policy
-          </a>
-          <a className="hover-underline-animation" href="/californiaPrivacy">
+          </Link>
+          <Link className="hover-underline-animation" to="/californiaPrivacy">
             California Privacy Notice
-          </a>
+          </Link>
         </nav>
         <nav>
           <h6 className="footer-title">Company</h6>
-          <a className="hover-underline-animation" href="/aboutUs">
+          <Link className="hover-underline-animation" to="/aboutUs">
             About us
-          </a>
-          <a className="hover-underline-animation" href="/Contact">
+          </Link>
+          <Link className="hover-underline-animation" to="/Contact">
             Contact
-          </a>
+          </Link>
         </nav>
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by TheContractorNow Ltd
+            Copyright © {new Date().getFullYear()} - All rights reserved by TheContractorNow Ltd
           </p>
         </aside>
       </footer>
