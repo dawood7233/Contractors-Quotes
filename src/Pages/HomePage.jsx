@@ -37,7 +37,7 @@ const HomePage = () => {
 
     if (selectedService) {
       const encodedTitle = encodeURIComponent(selectedService.title); // Encode for safe URL usage
-      navigate(`/services/${encodedTitle}?zip=${zipCode}`);
+      navigate(`/services/${encodedTitle}`, { state: { zipCode } }); // Pass zip code via state
     } else {
       alert("Please select a valid project type.");
     }
@@ -49,7 +49,7 @@ const HomePage = () => {
       <div className="relative w-full">
         <video
           className="w-full h-auto pt-16 sm:pt-0" // Added padding-top for mobile view
-          src="/assets/videos/workers.mp4"
+          src="/thecontractornow/assets/videos/workers.mp4"
           type="video/mp4"
           autoPlay
           loop

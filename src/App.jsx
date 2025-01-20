@@ -12,6 +12,24 @@ import UserTerms from "./Pages/UserTerms";
 import AutoScroll from "./Components/AutoScroll";
 import ScrollUpButton from "./Components/scrollUpButton";
 
+// Page Not Found Component
+function NotFoundPage() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen text-center bg-gray-100">
+      <h1 className="text-4xl font-bold text-secondary mb-4">404 - Page Not Found</h1>
+      <p className="text-lg text-gray-800 mb-6">
+        The page you are looking for does not exist.
+      </p>
+      <a
+        href="/"
+        className="px-6 py-2 text-secondary bg-primary rounded-md"
+      >
+        Go Back to Home
+      </a>
+    </div>
+  );
+}
+
 function App() {
   // Dynamically determine the basename
   const basePath = window.location.pathname
@@ -33,6 +51,7 @@ function App() {
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/californiaPrivacy" element={<CaliforniaPrivacyNotice />} />
         <Route path="/userTerms" element={<UserTerms />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </Router>

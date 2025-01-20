@@ -7,7 +7,7 @@ const Footer = () => {
       <footer className="footer bg-black text-base-200 p-10">
         <nav>
           <Link to="/" className="">
-            <img className="h-14 lg:h-16 pl-3" src="/assets/images/logo.png" alt="Logo" />
+            <img className="h-14 lg:h-16 pl-3" src="/thecontractornow/assets/images/logo.png" alt="Logo" />
           </Link>
         </nav>
         <nav>
@@ -25,7 +25,7 @@ const Footer = () => {
           <Link className="hover-underline-animation" to="/aboutUs">
             About us
           </Link>
-          <Link className="hover-underline-animation" to="/Contact">
+          <Link className="hover-underline-animation" to="/contact">
             Contact
           </Link>
         </nav>

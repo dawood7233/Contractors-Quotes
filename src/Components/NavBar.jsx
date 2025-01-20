@@ -8,19 +8,25 @@ const NavBar = () => {
   const [servicesSubmenuOpen, setServicesSubmenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  // Function to determine if the current page matches the link path
+  // Determine if the current page matches the link path
   const isActiveLink = (path) => location.pathname === path;
 
   // Toggle main menu visibility
   const toggleMenu = (e) => {
     e.stopPropagation();
-    setMenuOpen(!menuOpen);
-    setServicesSubmenuOpen(false);
+    setMenuOpen((prev) => {
+      if (!prev) setServicesSubmenuOpen(false); // Close submenu when opening the main menu
+      return !prev;
+    });
   };
 
   // Toggle services submenu visibility
   const toggleServicesSubmenu = () =>
-    setServicesSubmenuOpen(!servicesSubmenuOpen);
+    setServicesSubmenuOpen((prev) => !prev);
+
+  const handleAnimationEnd = () => {
+    if (!menuOpen) setServicesSubmenuOpen(false); // Ensure submenu is closed after main menu hides
+  };
 
   // Close the menu when clicking outside
   useEffect(() => {
@@ -86,7 +92,7 @@ const NavBar = () => {
           <Link to="/" className="flex items-center">
             <img
               className="h-14 lg:h-16 pl-3"
-              src="/assets/images/logo.png"
+              src="/thecontractornow/assets/images/logo.png"
               alt="Logo"
             />
           </Link>
@@ -97,14 +103,15 @@ const NavBar = () => {
           <div
             ref={menuRef}
             className="absolute top-16 left-0 bg-[#1f2020] w-60 text-base-100 z-10 shadow-lg rounded-xl"
+            onAnimationEnd={handleAnimationEnd}
           >
             <ul className="menu p-4">
               <li>
                 <Link
                   to="/"
-                  onClick={toggleMenu}
+                  onClick={() => setMenuOpen(false)}
                   className={`${
-                    isActiveLink("/") ? "text-[#ffb000]" : "text-base-100"
+                    isActiveLink("/") ? "text-[#ffb000] font-bold" : "text-base-100"
                   }`}
                 >
                   Home
@@ -123,7 +130,7 @@ const NavBar = () => {
                   <button
                     onClick={toggleServicesSubmenu}
                     className={
-                      isActiveLink("/services") ? "text-[#ffb000]" : ""
+                      isActiveLink("/services") ? "text-[#ffb000] font-bold" : ""
                     }
                   >
                     {servicesSubmenuOpen ? (
@@ -170,7 +177,11 @@ const NavBar = () => {
                             setMenuOpen(false);
                             setServicesSubmenuOpen(false);
                           }}
-                          className="hover:text-[#ffb000] text-base-100"
+                          className={`${
+                            location.pathname.includes(`/services/${service.title}`)
+                              ? "text-[#ffb000] font-bold"
+                              : "text-base-100"
+                          }`}
                         >
                           {service.title}
                         </Link>
@@ -182,10 +193,10 @@ const NavBar = () => {
               <li>
                 <Link
                   to="/aboutUs"
-                  onClick={toggleMenu}
+                  onClick={() => setMenuOpen(false)}
                   className={`${
                     isActiveLink("/aboutUs")
-                      ? "text-[#ffb000]"
+                      ? "text-[#ffb000] font-bold"
                       : "text-base-100"
                   }`}
                 >
@@ -195,10 +206,10 @@ const NavBar = () => {
               <li>
                 <Link
                   to="/contact"
-                  onClick={toggleMenu}
+                  onClick={() => setMenuOpen(false)}
                   className={`${
                     isActiveLink("/contact")
-                      ? "text-[#ffb000]"
+                      ? "text-[#ffb000] font-bold"
                       : "text-base-100"
                   }`}
                 >
@@ -216,9 +227,7 @@ const NavBar = () => {
               <Link
                 to="/"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
-                  isActiveLink("/")
-                    ? "text-[#ffb000] active-underline "
-                    : "text-base-100"
+                  isActiveLink("/") ? "text-[#ffb000] font-bold active-underline" : "text-base-100"
                 }`}
               >
                 Home
@@ -229,19 +238,23 @@ const NavBar = () => {
                 to="/services"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
                   isActiveLink("/services")
-                    ? "text-[#ffb000] active-underline"
+                    ? "text-[#ffb000] font-bold active-underline"
                     : "text-base-100"
                 }`}
               >
                 Services
               </Link>
-              <ul className="absolute hidden group-hover:flex bg-[#1f2020] px-10 py-4 rounded-lg shadow-lg w-[350px] flex-wrap gap-4 z-20 top-full left-0">
+              <ul className="absolute hidden group-hover:grid bg-[#1f2020] p-6 rounded-lg shadow-lg w-[300px] gap-4 z-20 top-full left-0 grid-cols-2">
                 {allServices.map((service) => (
                   <li key={service.title}>
                     <Link
                       to={`/services/${service.title}`}
                       state={{ title: service.title }}
-                      className="hover:text-[#ffb000] text-base-100"
+                      className={`hover:text-[#ffb000] ${
+                        location.pathname.includes(`/services/${service.title}`)
+                          ? "text-[#ffb000] font-bold"
+                          : "text-base-100"
+                      }`}
                     >
                       {service.title}
                     </Link>
@@ -254,7 +267,7 @@ const NavBar = () => {
                 to="/contact"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
                   isActiveLink("/contact")
-                    ? "text-[#ffb000] active-underline"
+                    ? "text-[#ffb000] font-bold active-underline"
                     : "text-base-100"
                 }`}
               >
@@ -266,7 +279,7 @@ const NavBar = () => {
                 to="/aboutUs"
                 className={`hover:text-[#ffb000] hover-underline-animation ${
                   isActiveLink("/aboutUs")
-                    ? "text-[#ffb000] active-underline"
+                    ? "text-[#ffb000] font-bold active-underline"
                     : "text-base-100"
                 }`}
               >

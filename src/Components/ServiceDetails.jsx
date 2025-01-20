@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { allServices } from "./servicesData";
 
 const ServiceDetails = () => {
   const { title } = useParams(); // Extract the service title from the route params
+  const location = useLocation(); // Access location state
   const decodedTitle = decodeURIComponent(title); // Decode the URL-encoded title
   const service = allServices.find(
     (service) => service.title.toLowerCase() === decodedTitle.toLowerCase()
   );
 
-  const passedZipCode =
-    new URLSearchParams(window.location.search).get("zip") || "";
+  // Get the passed zip code from location state
+  const passedZipCode = location.state?.zipCode || "";
 
   if (!service) {
     return (
@@ -93,6 +94,7 @@ const ServiceDetails = () => {
       min,
     }));
   }, []);
+
   // Add TrustedForm script dynamically
   useEffect(() => {
     const trustedFormScript = document.createElement("script");
@@ -103,17 +105,22 @@ const ServiceDetails = () => {
       "://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&ping_field=xxTrustedFormPingUrl&l=" +
       new Date().getTime() +
       Math.random();
-    document.body.appendChild(trustedFormScript);
 
     const trustedFormNoscript = document.createElement("noscript");
     const img = document.createElement("img");
     img.src = "https://api.trustedform.com/ns.gif";
     trustedFormNoscript.appendChild(img);
+
+    document.body.appendChild(trustedFormScript);
     document.body.appendChild(trustedFormNoscript);
 
     return () => {
-      document.body.removeChild(trustedFormScript);
-      document.body.removeChild(trustedFormNoscript);
+      if (document.body.contains(trustedFormScript)) {
+        document.body.removeChild(trustedFormScript);
+      }
+      if (document.body.contains(trustedFormNoscript)) {
+        document.body.removeChild(trustedFormNoscript);
+      }
     };
   }, []);
 
@@ -125,18 +132,23 @@ const ServiceDetails = () => {
     leadiDScript.async = true;
     leadiDScript.src =
       "//create.lidstatic.com/campaign/402848de-d8aa-7158-923b-a6a24e7956dc.js?snippet_version=2";
-    document.body.appendChild(leadiDScript);
 
     const leadiDNoscript = document.createElement("noscript");
     const img = document.createElement("img");
     img.src =
       "//create.leadid.com/noscript.gif?lac=0F8580E1-10B6-A5AB-B0DF-1A2B8CF787AF&lck=402848de-d8aa-7158-923b-a6a24e7956dc&snippet_version=2";
     leadiDNoscript.appendChild(img);
+
+    document.body.appendChild(leadiDScript);
     document.body.appendChild(leadiDNoscript);
 
     return () => {
-      document.body.removeChild(leadiDScript);
-      document.body.removeChild(leadiDNoscript);
+      if (document.body.contains(leadiDScript)) {
+        document.body.removeChild(leadiDScript);
+      }
+      if (document.body.contains(leadiDNoscript)) {
+        document.body.removeChild(leadiDNoscript);
+      }
     };
   }, []);
 
@@ -148,8 +160,18 @@ const ServiceDetails = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check zip code validity
+    // const isZipCodeValid = (zip) => /^\d{5}$/.test(zip);
+    // if (
+    //   !isZipCodeValid(formData["current zip code?"]) ||
+    //   !isZipCodeValid(formData["moving zip code?"])
+    // ) {
+    //   alert("Please enter valid 5-digit zip codes.");
+    //   return;
+    // }
 
     if (!formData.agreement) {
       setShowError(true);
@@ -158,8 +180,33 @@ const ServiceDetails = () => {
 
     setShowError(false);
 
-    console.log("Form Data Submitted:", formData);
-    alert("Submitted successfully!");
+    // Prepare data for submission
+    const requestBody = JSON.stringify(formData);
+
+    try {
+      const response = await fetch(
+        "https://demo.pingtreesystems.com/lead/direct_post",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Correct header for JSON payload
+          },
+          body: requestBody, // Ensure this is properly formatted
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to submit data: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      console.log("API Response:", result);
+
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("There was an error submitting the form. Please try again.");
+    }
 
     setFormData({
       firstName: "",
@@ -210,25 +257,77 @@ const ServiceDetails = () => {
         <div className="max-w-4xl mx-auto mt-2">
           <form>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {service.inputs.map((input, index) => (
+              {service?.inputs.map((input, index) => (
                 <div className="mb-4" key={index}>
                   <label className="block text-secondary font-medium mb-2">
                     {input.question}
                   </label>
-                  <select
-                    name={input.question}
-                    value={formData[input.question] || ""}
-                    onChange={handleChange}
-                    className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                    required
-                  >
-                    <option value="">Select an option</option>
-                    {input.options.map((option, idx) => (
-                      <option key={idx} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
+                  {input.options ? (
+                    // Render dropdown for questions with options
+                    <select
+                      name={input.question}
+                      value={
+                        formData[
+                          input.question
+                        ] || ""
+                      }
+                      onChange={handleChange}
+                      className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                      required
+                    >
+                      <option value="">Select an option</option>
+                      {input.options.map((option, idx) => (
+                        <option key={idx} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  ) : input.type === "date" ? (
+                    // Render date picker for date inputs
+                    <input
+                      type="date"
+                      name={input.question.replace(/\s+/g, "_").toLowerCase()}
+                      value={
+                        formData[
+                          input.question.replace(/\s+/g, "_").toLowerCase()
+                        ] || ""
+                      }
+                      onChange={handleChange}
+                      className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                      required
+                    />
+                  ) : (
+                    // Render text input for questions without options or specific types
+                    <input
+                      type="text"
+                      name={input.question.replace(/\s+/g, "_").toLowerCase()}
+                      value={
+                        formData[
+                          input.question.replace(/\s+/g, "_").toLowerCase()
+                        ] || ""
+                      }
+                      onChange={handleChange}
+                      className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
+                      required={input.question
+                        .toLowerCase()
+                        .includes("zip code")}
+                      placeholder={
+                        input.question.toLowerCase().includes("zip code")
+                          ? "Enter 5-digit zip code"
+                          : ""
+                      }
+                      pattern={
+                        input.question.toLowerCase().includes("zip code")
+                          ? "\\d{5}"
+                          : undefined
+                      }
+                      title={
+                        input.question.toLowerCase().includes("zip code")
+                          ? "Must be 5 digits"
+                          : undefined
+                      }
+                    />
+                  )}
                 </div>
               ))}
             </div>
