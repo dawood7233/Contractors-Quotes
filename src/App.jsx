@@ -6,15 +6,21 @@ import Services from "./Pages/Services";
 import Contact from "./Pages/Contact";
 import Footer from "./Components/Footer";
 import ServiceDetails from "./Components/ServiceDetails";
-import PrivacyPloicy from "./Pages/PrivacyPolicy";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import CaliforniaPrivacyNotice from "./Pages/CaliforniaPrivacyNotice";
 import UserTerms from "./Pages/UserTerms";
 import AutoScroll from "./Components/AutoScroll";
 import ScrollUpButton from "./Components/scrollUpButton";
 
 function App() {
+  // Dynamically determine the basename
+  const basePath = window.location.pathname
+    .split("/")
+    .slice(0, window.location.pathname.split("/").indexOf("thecontractornow") + 1)
+    .join("/");
+
   return (
-    <Router>
+    <Router basename={basePath}>
       <Navbar data={{ Services }} />
       <AutoScroll />
       <ScrollUpButton />
@@ -24,11 +30,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:title" element={<ServiceDetails />} />
-        <Route path="/privacyPolicy" element={<PrivacyPloicy />} />
+        <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/californiaPrivacy" element={<CaliforniaPrivacyNotice />} />
         <Route path="/userTerms" element={<UserTerms />} />
       </Routes>
-
       <Footer />
     </Router>
   );
