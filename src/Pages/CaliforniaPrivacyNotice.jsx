@@ -627,7 +627,7 @@ const CaliforniaPrivacyNotice = () => {
         Policy, the ways in which we collect and use your personal information,
         your choices and rights regarding such use, or wish to exercise your
         rights under California law, please do not hesitate to contact us at:
-        <span className="font-bold">Email:</span> info@getacontractornow.com Postal Address: GetAContractorNow.com,
+        <span className="font-bold">Email:</span> TheContractorNow.com Postal Address: TheContractorNow.com,
         1500 Cehstnut St, Philadelphia, PA 19102
       </div>
     </div>

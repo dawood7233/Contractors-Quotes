@@ -235,6 +235,7 @@ const ServiceDetails = () => {
       userAgent: formData.userAgent,
     });
   };
+  console.log(formData);
 
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
@@ -544,9 +545,12 @@ const ServiceDetails = () => {
                 onChange={(e) => {
                   const value = e.target.value;
 
-                  // Allow only numeric input and limit to 5 characters
-                  if (/^\d{0,5}$/.test(value)) {
-                    handleChange(e); // Update the form data if valid
+                  // Allow numeric input but limit it to 5 digits
+                  if (/^\d*$/.test(value)) {
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      zipCode: value.slice(0, 5), // Limit the value to 5 characters
+                    }));
                   }
                 }}
                 className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"

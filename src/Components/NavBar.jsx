@@ -222,7 +222,7 @@ const NavBar = () => {
 
         {/* Navbar Center (Desktop) */}
         <div className="navbar-center hidden md:flex">
-          <ul className="menu menu-horizontal px-1 text-[16px]">
+          <ul className="menu-lg menu-horizontal px-1 text-[16px]">
             <li>
               <Link
                 to="/"
@@ -244,7 +244,7 @@ const NavBar = () => {
               >
                 Services
               </Link>
-              <ul className="absolute hidden group-hover:grid bg-[#1f2020] p-6 rounded-lg shadow-lg w-[300px] gap-4 z-20 top-full left-0 grid-cols-2">
+              <ul className="absolute hidden group-hover:grid bg-[#1f2020] p-6 rounded-lg shadow-lg w-[400px] gap-4 z-20 top-full left-0 grid-cols-2">
                 {allServices.map((service) => (
                   <li key={service.title}>
                     <Link
