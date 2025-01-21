@@ -25,7 +25,7 @@ const ServiceDetails = () => {
   }
 
   const [showError, setShowError] = useState(false);
-
+  
   // Initialize form data state
   const [formData, setFormData] = useState({
     firstName: "",
@@ -55,6 +55,14 @@ const ServiceDetails = () => {
     ipAddress: "",
     userAgent: "",
   });
+
+  // Update formData.url when the location changes
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      url: window.location.href, // Update with the current URL
+    }));
+  }, [location.pathname]); // Re-run whenever the path changes
 
   // Fetch and set initial parameters on component mount
   useEffect(() => {
@@ -235,7 +243,6 @@ const ServiceDetails = () => {
       userAgent: formData.userAgent,
     });
   };
-  console.log(formData);
 
   return (
     <div className="container mx-auto px-6 py-12 pt-24">
@@ -262,9 +269,8 @@ const ServiceDetails = () => {
                     {input.question}
                   </label>
                   {input.options ? (
-                    // Render dropdown for questions with options
                     <select
-                      name={input.question}
+                      name={input.question} // Use the question as the key
                       value={formData[input.question] || ""}
                       onChange={handleChange}
                       className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
@@ -278,29 +284,19 @@ const ServiceDetails = () => {
                       ))}
                     </select>
                   ) : input.type === "date" ? (
-                    // Render date picker for date inputs
                     <input
                       type="date"
-                      name={input.question.replace(/\s+/g, "_").toLowerCase()}
-                      value={
-                        formData[
-                          input.question.replace(/\s+/g, "_").toLowerCase()
-                        ] || ""
-                      }
+                      name={input.question} // Use the question as the key
+                      value={formData[input.question] || ""}
                       onChange={handleChange}
                       className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                       required
                     />
                   ) : (
-                    // Render text input for questions without options or specific types
                     <input
                       type="text"
-                      name={input.question.replace(/\s+/g, "_").toLowerCase()}
-                      value={
-                        formData[
-                          input.question.replace(/\s+/g, "_").toLowerCase()
-                        ] || ""
-                      }
+                      name={input.question} // Use the question as the key
+                      value={formData[input.question] || ""}
                       onChange={handleChange}
                       className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                       required={input.question
