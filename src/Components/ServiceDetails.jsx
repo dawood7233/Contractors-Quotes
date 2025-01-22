@@ -25,7 +25,7 @@ const ServiceDetails = () => {
   }
 
   const [showError, setShowError] = useState(false);
-  
+
   // Initialize form data state
   const [formData, setFormData] = useState({
     firstName: "",
@@ -188,31 +188,74 @@ const ServiceDetails = () => {
 
     setShowError(false);
 
-    // Prepare data for submission
-    const requestBody = JSON.stringify(formData);
+    // testing after integrating backend:
+
+    // Create a demo state with only the required fields
+    const demoFormData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      category: service?.id || "General",
+      address: formData.streetAddress,
+      city: formData.city,
+      state: formData.state,
+      zip: formData.zipCode,
+      homeOwner: formData.HomeOwner,
+      cabinetsType: formData["Brief data about requirements"],
+      vid: 1, // Vendor ID
+      leadtype: 2, // Lead type
+      istest: 1, // Test mode
+    };
+
+    // Convert demoFormData to a URL-encoded string
+    const requestBody = new URLSearchParams(demoFormData).toString();
 
     try {
       const response = await fetch(
-        "https://demo.pingtreesystems.com/lead/direct_post",
+        "http://steermarketeer.com/thecontractornow/proxy.php", // PHP Proxy URL
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json", // Correct header for JSON payload
+            "Content-Type": "application/x-www-form-urlencoded",
           },
           body: requestBody,
-          mode: "no-cors", // No-CORS mode for limited browser handling
         }
       );
 
-      // Note: response.ok and response.json() won't work in no-cors mode.
-      console.log("Request sent. Check server for response handling.");
-      alert(
-        "Form submitted successfully (but no server response is accessible due to CORS)."
-      );
+      const responseText = await response.text();
+      alert("Server response: " + responseText);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error submitting demo form:", error);
       alert("There was an error submitting the form. Please try again.");
     }
+
+    // // Prepare data for submission
+    // const requestBody = JSON.stringify(formData);
+    // console.log(requestBody);
+
+    // try {
+    //   const response = await fetch(
+    //     "https://demo.pingtreesystems.com/lead/direct_post",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json", // Correct header for JSON payload
+    //       },
+    //       body: requestBody,
+    //       mode: "no-cors", // No-CORS mode for limited browser handling
+    //     }
+    //   );
+
+    //   // Note: response.ok and response.json() won't work in no-cors mode.
+    //   console.log("Request sent. Check server for response handling.");
+    //   alert(
+    //     "Form submitted successfully (but no server response is accessible due to CORS)."
+    //   );
+    // } catch (error) {
+    //   console.error("Error submitting form:", error);
+    //   alert("There was an error submitting the form. Please try again.");
+    // }
 
     setFormData({
       firstName: "",
@@ -581,8 +624,8 @@ const ServiceDetails = () => {
                   required
                 >
                   <option value="">Select an option</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="1">Yes</option>
+                  <option value="2">No</option>
                 </select>
               </div>
 
