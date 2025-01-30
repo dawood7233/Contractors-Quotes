@@ -92,7 +92,7 @@ const NavBar = () => {
           <Link to="/" className="flex items-center">
             <img
               className="h-14 lg:h-16 pl-3"
-              src="/thecontractornow/assets/images/logo.png"
+              src="/assets/images/logo.png"
               alt="Logo"
             />
           </Link>

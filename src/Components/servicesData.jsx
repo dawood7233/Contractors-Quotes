@@ -4,7 +4,7 @@ export const allServices = [
     title: "Solar",
     description:
       "Harness the power of the sun with our advanced solar solutions. Reduce energy costs, lower your carbon footprint, and enjoy sustainable energy tailored to your needs.",
-    image: "/thecontractornow/assets/images/solar-panel.gif",
+    image: "/assets/images/solar-panel.gif",
     inputs: [
       {
         question: "How much is your currency bill?",
@@ -431,7 +431,7 @@ export const allServices = [
     title: "Windows",
     description:
       "Enhance your home’s beauty and efficiency with our premium window services. From installations to replacements, we provide energy-saving, stylish, and durable options.",
-    image: "/thecontractornow/assets/images/windows.gif",
+    image: "/assets/images/windows.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -462,7 +462,7 @@ export const allServices = [
     title: "Roofing",
     description:
       "Protect your home with our reliable roofing solutions. Whether you need a new roof, repairs, or maintenance, we ensure durability, safety, and top-notch craftsmanship.",
-    image: "/thecontractornow/assets/images/home.gif",
+    image: "/assets/images/home.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -490,7 +490,7 @@ export const allServices = [
     title: "HVAC",
     description:
       "Stay comfortable year-round with our HVAC services. From installation to maintenance, we optimize your heating and cooling systems for peak efficiency.",
-    image: "/thecontractornow/assets/images/HVAC.gif",
+    image: "/assets/images/HVAC.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -534,7 +534,7 @@ export const allServices = [
     title: "Painting",
     description:
       "Transform your space with our expert painting services. We deliver flawless finishes and vibrant colors that breathe life into your home or business.",
-    image: "/thecontractornow/assets/images/painter.gif",
+    image: "/assets/images/painter.gif",
     inputs: [
       {
         question: "Type of painting needed",
@@ -562,7 +562,7 @@ export const allServices = [
     title: "Plumbing",
     description:
       "Solve your plumbing problems with our fast and efficient services. From leaky faucets to major installations, we ensure everything flows smoothly.",
-    image: "/thecontractornow/assets/images/tap.gif",
+    image: "/assets/images/tap.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -594,7 +594,7 @@ export const allServices = [
     title: "Gutters",
     description:
       "Keep your home safe from water damage with our seamless gutter solutions. We offer installation, repair, and cleaning services for optimal drainage.",
-    image: "/thecontractornow/assets/images/Gutters.gif",
+    image: "/assets/images/Gutters.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -615,7 +615,7 @@ export const allServices = [
     title: "HomeSecurity",
     description:
       "Secure your peace of mind with our advanced home security systems. Protect your loved ones with cutting-edge technology and professional installation.",
-    image: "/thecontractornow/assets/images/home Security.gif",
+    image: "/assets/images/home Security.gif",
     inputs: [
       {
         question: "Type of service needed",
@@ -632,7 +632,7 @@ export const allServices = [
     title: "Kitchen",
     description:
       "Create your dream kitchen with our expert remodeling and installation services. We blend functionality and style to make your culinary space extraordinary.",
-    image: "/thecontractornow/assets/images/kitchen.gif",
+    image: "/assets/images/kitchen.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -661,7 +661,7 @@ export const allServices = [
     title: "Siding",
     description:
       "Enhance your home’s curb appeal and durability with our top-quality siding services. Choose from a variety of styles and materials for lasting beauty.",
-    image: "/thecontractornow/assets/images/siding.gif",
+    image: "/assets/images/siding.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -695,7 +695,7 @@ export const allServices = [
     title: "Bathroom",
     description:
       "Revitalize your bathroom with our modern renovation solutions. From luxurious upgrades to practical fixes, we craft spaces that blend comfort and elegance.",
-    image: "/thecontractornow/assets/images/bathroom.gif",
+    image: "/assets/images/bathroom.gif",
     inputs: [
       {
         question: "What is the nature of your project?",
@@ -728,7 +728,7 @@ export const allServices = [
     title: "Fencing",
     description:
       "Define your property with our custom fencing solutions. We provide durable, stylish, and secure options to fit your needs and style.",
-    image: "/thecontractornow/assets/images/fences.gif",
+    image: "/assets/images/fences.gif",
     inputs: [
       {
         question: "Type of fencing project?",
@@ -760,7 +760,7 @@ export const allServices = [
     title: "Flooring",
     description:
       "Upgrade your home with our premium flooring services. From hardwood to tiles, we offer elegant, durable, and cost-effective solutions for every space.",
-    image: "/thecontractornow/assets/images/flooring.gif",
+    image: "/assets/images/flooring.gif",
     inputs: [
       {
         question: "Floor Type?",
@@ -789,7 +789,7 @@ export const allServices = [
     title: "Movers",
     description:
       "Make your move seamless with our professional moving services. From packing to unloading, we ensure safe, efficient, and stress-free relocation for homes and businesses alike.",
-    image: "/thecontractornow/assets/images/movers.gif",
+    image: "/assets/images/movers.gif",
     inputs: [
       {
         question: "Current zip code",
