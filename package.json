@@ -1,6 +1,5 @@
 {
-  "name": "thecontractornow",
-  "homepage": "/thecontractornow",  
+  "name": "thecontractornow",  
   "private": true,
   "version": "0.0.0",
   "type": "module",

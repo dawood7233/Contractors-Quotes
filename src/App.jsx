@@ -38,7 +38,7 @@ function App() {
     .join("/");
 
   return (
-    <Router basename={basePath}>
+    <Router >
       <Navbar data={{ Services }} />
       <AutoScroll />
       <ScrollUpButton />
