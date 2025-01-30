@@ -32,10 +32,10 @@ function NotFoundPage() {
 
 function App() {
   // Dynamically determine the basename
-  const basePath = window.location.pathname
-    .split("/")
-    .slice(0, window.location.pathname.split("/").indexOf("thecontractornow") + 1)
-    .join("/");
+  // const basePath = window.location.pathname
+  //   .split("/")
+  //   .slice(0, window.location.pathname.split("/").indexOf("thecontractornow") + 1)
+  //   .join("/");
 
   return (
     <Router >
