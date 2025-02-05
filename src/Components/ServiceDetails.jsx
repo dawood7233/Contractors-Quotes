@@ -214,7 +214,7 @@ const ServiceDetails = () => {
 
     try {
       const response = await fetch(
-        "http://steermarketeer.com/thecontractornow/proxy.php", // PHP Proxy URL
+        "https://thecontractornow.com/proxy.php", // PHP Proxy URL
         {
           method: "POST",
           headers: {

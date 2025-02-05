@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const PrivacyPolicy = () => {
   return (
@@ -424,7 +425,7 @@ const PrivacyPolicy = () => {
       <h1 className="font-bold text-2xl">CALIFORNIA RESIDENTS- Your California Rights</h1>
       <p>
         The California Consumer Protection Act has granted specific rights and
-        remedies. To review all California Privacy Rights and Remedies please
+        remedies. To review all <Link to="/californiaPrivacy" className="text-blue-400 underline">California Privacy Rights</Link>  and Remedies please
         click here
       </p>
       <h1 className="font-bold text-2xl">Contact Information</h1>
@@ -434,7 +435,7 @@ const PrivacyPolicy = () => {
         any comments or questions regarding our Privacy Policy, or to report
         abuse of any personal information collected under this Privacy Policy,
         please email us at info@thecontractornow.com For more information about
-        protecting your privacy, you may wish to visit: http://www.ftc.gov.
+        protecting your privacy, you may wish to visit: <Link  to="https://www.ftc.gov/" className="text-blue-400 underline" target="_blank">http://www.ftc.gov</Link> 
       </p>
       </div>
     </div>
