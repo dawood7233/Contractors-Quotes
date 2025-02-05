@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { allServices } from "./servicesData";
+import { Link } from "react-router-dom";
 
 const ServiceDetails = () => {
   const { title } = useParams(); // Extract the service title from the route params
@@ -732,8 +733,7 @@ const ServiceDetails = () => {
                   }`}
                 />
                 <span className="text-sm text-secondary">
-                  By clicking GET YOUR QUOTE, I agree to the Terms of Service
-                  and Privacy Policy, I authorize home improvement companies,
+                  By clicking <Link to="/services" className="underline  text-blue-400">GET YOUR QUOTE</Link> , I agree to the <Link to="/userTerms" className="underline  text-blue-400">Terms of Service</Link> and <Link to="/privacyPolicy" className="underline  text-blue-400">Privacy Policy</Link>, I authorize home improvement companies,
                   their contractors, and partner companies to contact me about
                   home improvement offers by phone calls and text messages to
                   the number I provided. I authorize that these marketing

@@ -3,18 +3,20 @@ import React from "react";
 const CaliforniaPrivacyNotice = () => {
   return (
     <div className="pt-20 ">
-     <div className="bg-gradient-to-r from-amber-400 to-secondary text-black text-center py-16 px-6 w-full hover">
-        <h1 className="text-4xl font-bold mb-4 cursor-pointer">California Privacy</h1>
+      <div className="bg-gradient-to-r from-amber-400 to-secondary text-black text-center py-16 px-6 w-full hover">
+        <h1 className="text-4xl font-bold mb-4 cursor-pointer">
+          California Privacy
+        </h1>
       </div>
       <div className="p-6">
         <p>
           This California Privacy Notice supplements the information contained
           in our general Privacy Policy and applies solely to those visitors and
           users that are residents of the State of California (“consumer” or
-          “you”). GetAContractorNow.com (“we”, “us”, “our”) adopts this notice
-          to comply with the California Consumer Privacy Act of 2018 (“CCPA”),
-          as amended, and other California Privacy laws. Any terms defined by
-          the CCPA have the same meaning when used in this notice.
+          “you”). thecontractornow.com (“we”, “us”, “our”) adopts this notice to
+          comply with the California Consumer Privacy Act of 2018 (“CCPA”), as
+          amended, and other California Privacy laws. Any terms defined by the
+          CCPA have the same meaning when used in this notice.
         </p>
         <h1 className="font-bold text-2xl">Information We Collect</h1>
         <p>
@@ -458,7 +460,7 @@ const CaliforniaPrivacyNotice = () => {
         <p>
           To exercise the access, data portability, deletion and opt-out rights
           described above, please submit a verifiable consumer request to us by
-          Emailing us compliance@getacontractornow.com Only you or a person
+          Emailing us compliance@thecontractornow.com Only you or a person
           registered with the California Secretary of State that you authorize
           to act on your behalf, may make a verifiable consumer request related
           to your personal information. You may also make a verifiable consumer
@@ -627,8 +629,8 @@ const CaliforniaPrivacyNotice = () => {
         Policy, the ways in which we collect and use your personal information,
         your choices and rights regarding such use, or wish to exercise your
         rights under California law, please do not hesitate to contact us at:
-        <span className="font-bold">Email:</span> TheContractorNow.com Postal Address: TheContractorNow.com,
-        1500 Cehstnut St, Philadelphia, PA 19102
+        <span className="font-bold">Email:</span> TheContractorNow.com Postal
+        Address: TheContractorNow.com, 1500 Cehstnut St, Philadelphia, PA 19102
       </div>
     </div>
   );
