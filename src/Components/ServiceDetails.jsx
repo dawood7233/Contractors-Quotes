@@ -172,16 +172,6 @@ const ServiceDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check zip code validity
-    // const isZipCodeValid = (zip) => /^\d{5}$/.test(zip);
-    // if (
-    //   !isZipCodeValid(formData["current zip code?"]) ||
-    //   !isZipCodeValid(formData["moving zip code?"])
-    // ) {
-    //   alert("Please enter valid 5-digit zip codes.");
-    //   return;
-    // }
-
     if (!formData.agreement) {
       setShowError(true);
       return;
@@ -305,7 +295,7 @@ const ServiceDetails = () => {
       {/* Service-Specific Inputs */}
       {service?.inputs && (
         <div className="max-w-4xl mx-auto mt-2">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {service?.inputs.map((input, index) => (
                 <div className="mb-4" key={index}>
@@ -314,7 +304,7 @@ const ServiceDetails = () => {
                   </label>
                   {input.options ? (
                     <select
-                      name={input.question} // Use the question as the key
+                      name={input.question}
                       value={formData[input.question] || ""}
                       onChange={handleChange}
                       className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
@@ -330,7 +320,7 @@ const ServiceDetails = () => {
                   ) : input.type === "date" ? (
                     <input
                       type="date"
-                      name={input.question} // Use the question as the key
+                      name={input.question}
                       value={formData[input.question] || ""}
                       onChange={handleChange}
                       className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
@@ -339,13 +329,11 @@ const ServiceDetails = () => {
                   ) : (
                     <input
                       type="text"
-                      name={input.question} // Use the question as the key
+                      name={input.question}
                       value={formData[input.question] || ""}
                       onChange={handleChange}
                       className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
-                      required={input.question
-                        .toLowerCase()
-                        .includes("zip code")}
+                      required
                       placeholder={
                         input.question.toLowerCase().includes("zip code")
                           ? "Enter 5-digit zip code"
@@ -733,15 +721,29 @@ const ServiceDetails = () => {
                   }`}
                 />
                 <span className="text-sm text-secondary">
-                  By clicking <Link to="/services" className="underline  text-blue-400">GET YOUR QUOTE</Link> , I agree to the <Link to="/userTerms" className="underline  text-blue-400">Terms of Service</Link> and <Link to="/privacyPolicy" className="underline  text-blue-400">Privacy Policy</Link>, I authorize home improvement companies,
-                  their contractors, and partner companies to contact me about
-                  home improvement offers by phone calls and text messages to
-                  the number I provided. I authorize that these marketing
-                  communications may be delivered to me using an automatic
-                  telephone dialing system or by prerecorded message. I
-                  understand that my consent is not a condition of purchase, and
-                  I may revoke that consent at any time. Mobile and data charges
-                  may apply. California Residents.
+                  By clicking{" "}
+                  <Link to="/services" className="underline  text-blue-400">
+                    GET YOUR QUOTE
+                  </Link>{" "}
+                  , I agree to the{" "}
+                  <Link to="/userTerms" className="underline  text-blue-400">
+                    Terms of Service
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    to="/privacyPolicy"
+                    className="underline  text-blue-400"
+                  >
+                    Privacy Policy
+                  </Link>
+                  , I authorize home improvement companies, their contractors,
+                  and partner companies to contact me about home improvement
+                  offers by phone calls and text messages to the number I
+                  provided. I authorize that these marketing communications may
+                  be delivered to me using an automatic telephone dialing system
+                  or by prerecorded message. I understand that my consent is not
+                  a condition of purchase, and I may revoke that consent at any
+                  time. Mobile and data charges may apply. California Residents.
                 </span>
               </label>
               {!formData.agreement && showError && (
@@ -762,6 +764,17 @@ const ServiceDetails = () => {
                     setShowError(true); // Show error message
                   } else {
                     setShowError(false); // Clear error message
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    if (!formData.agreement) {
+                      setShowError(true);
+                    } else {
+                      setShowError(false);
+                      e.target.click(); // Simulate button click
+                    }
                   }
                 }}
               >

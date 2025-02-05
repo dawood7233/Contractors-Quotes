@@ -122,6 +122,7 @@ const HomePage = () => {
             placeholder="Zip Code"
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleGetQuote()}
             className="input input-bordered w-full"
           />
 
