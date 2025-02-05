@@ -11,6 +11,7 @@ import CaliforniaPrivacyNotice from "./Pages/CaliforniaPrivacyNotice";
 import UserTerms from "./Pages/UserTerms";
 import AutoScroll from "./Components/AutoScroll";
 import ScrollUpButton from "./Components/scrollUpButton";
+import ThankYou from "./Pages/ThankYou";
 
 // Page Not Found Component
 function NotFoundPage() {
@@ -52,6 +53,7 @@ function App() {
         <Route path="/californiaPrivacy" element={<CaliforniaPrivacyNotice />} />
         <Route path="/userTerms" element={<UserTerms />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/thankYou" element={<ThankYou />} />
       </Routes>
       <Footer />
     </Router>

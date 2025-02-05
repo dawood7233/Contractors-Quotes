@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import React, { useState, useEffect, } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { allServices } from "./servicesData";
 import { Link } from "react-router-dom";
+
 
 const ServiceDetails = () => {
   const { title } = useParams(); // Extract the service title from the route params
@@ -10,7 +11,7 @@ const ServiceDetails = () => {
   const service = allServices.find(
     (service) => service.title.toLowerCase() === decodedTitle.toLowerCase()
   );
-
+const navigate = useNavigate();
   // Get the passed zip code from location state
   const passedZipCode = location.state?.zipCode || "";
 
@@ -276,6 +277,7 @@ const ServiceDetails = () => {
       ipAddress: formData.ipAddress,
       userAgent: formData.userAgent,
     });
+    navigate("/thankYou");
   };
 
   return (

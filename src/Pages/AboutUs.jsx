@@ -13,11 +13,17 @@ const AboutUs = () => {
       {/* Why Us Section */}
       <div className="container mx-auto px-6 lg:px-20 py-12">
         <p className="text-secondary text-lg leading-relaxed text-center">
-          Our products include a wide selection of quality services. We aim to
-          deliver innovation with the addition of reliability and assurance of
-          cost effectiveness. One important aspect about us is that project
-          management is one of our specialties. We pay close attention to our
-          customers and clients with a 24/7 contactable schedule.
+          Thecontractornow is an innovative way for you to connect with home
+          service providers nearby. Finding the right home contractor according
+          to your needs and budget can be a daunting task. We make it easy for
+          home owners to connect with multiple qualified professionals in their
+          area. Able to compare services and budgets and make inform decisions.
+          This all can be achieved by few clicks by filling the form. What
+          thecontractornow helps you with? - To find the right Professional near
+          you - It saves you time as you do not have to find different
+          contractors through extensive searches. - Compare multi quotations and
+          make the right decision. - Find the right professional and get the job
+          done
         </p>
       </div>
 
