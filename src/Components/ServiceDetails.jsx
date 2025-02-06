@@ -1,8 +1,7 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { allServices } from "./servicesData";
 import { Link } from "react-router-dom";
-
 
 const ServiceDetails = () => {
   const { title } = useParams(); // Extract the service title from the route params
@@ -11,7 +10,7 @@ const ServiceDetails = () => {
   const service = allServices.find(
     (service) => service.title.toLowerCase() === decodedTitle.toLowerCase()
   );
-const navigate = useNavigate();
+  const navigate = useNavigate();
   // Get the passed zip code from location state
   const passedZipCode = location.state?.zipCode || "";
 
@@ -105,61 +104,55 @@ const navigate = useNavigate();
     }));
   }, []);
 
+  // Function to check if a script is already in the DOM
+  const isScriptAlreadyAdded = (src) => {
+    return document.querySelector(`script[src="${src}"]`) !== null;
+  };
+
   // Add TrustedForm script dynamically
   useEffect(() => {
-    const trustedFormScript = document.createElement("script");
-    trustedFormScript.type = "text/javascript";
-    trustedFormScript.async = true;
-    trustedFormScript.src =
+    const trustedFormSrc =
       (document.location.protocol === "https:" ? "https" : "http") +
       "://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&ping_field=xxTrustedFormPingUrl&l=" +
       new Date().getTime() +
       Math.random();
 
-    const trustedFormNoscript = document.createElement("noscript");
-    const img = document.createElement("img");
-    img.src = "https://api.trustedform.com/ns.gif";
-    trustedFormNoscript.appendChild(img);
+    if (!isScriptAlreadyAdded(trustedFormSrc)) {
+      const trustedFormScript = document.createElement("script");
+      trustedFormScript.type = "text/javascript";
+      trustedFormScript.async = true;
+      trustedFormScript.src = trustedFormSrc;
 
-    document.body.appendChild(trustedFormScript);
-    document.body.appendChild(trustedFormNoscript);
+      document.body.appendChild(trustedFormScript);
 
-    return () => {
-      if (document.body.contains(trustedFormScript)) {
-        document.body.removeChild(trustedFormScript);
-      }
-      if (document.body.contains(trustedFormNoscript)) {
-        document.body.removeChild(trustedFormNoscript);
-      }
-    };
+      return () => {
+        if (document.body.contains(trustedFormScript)) {
+          document.body.removeChild(trustedFormScript);
+        }
+      };
+    }
   }, []);
 
   // Add LeadiD script dynamically
   useEffect(() => {
-    const leadiDScript = document.createElement("script");
-    leadiDScript.id = "LeadiDscript_campaign";
-    leadiDScript.type = "text/javascript";
-    leadiDScript.async = true;
-    leadiDScript.src =
+    const leadiDScriptSrc =
       "//create.lidstatic.com/campaign/402848de-d8aa-7158-923b-a6a24e7956dc.js?snippet_version=2";
 
-    const leadiDNoscript = document.createElement("noscript");
-    const img = document.createElement("img");
-    img.src =
-      "//create.leadid.com/noscript.gif?lac=0F8580E1-10B6-A5AB-B0DF-1A2B8CF787AF&lck=402848de-d8aa-7158-923b-a6a24e7956dc&snippet_version=2";
-    leadiDNoscript.appendChild(img);
+    if (!isScriptAlreadyAdded(leadiDScriptSrc)) {
+      const leadiDScript = document.createElement("script");
+      leadiDScript.id = "LeadiDscript_campaign";
+      leadiDScript.type = "text/javascript";
+      leadiDScript.async = true;
+      leadiDScript.src = leadiDScriptSrc;
 
-    document.body.appendChild(leadiDScript);
-    document.body.appendChild(leadiDNoscript);
+      document.body.appendChild(leadiDScript);
 
-    return () => {
-      if (document.body.contains(leadiDScript)) {
-        document.body.removeChild(leadiDScript);
-      }
-      if (document.body.contains(leadiDNoscript)) {
-        document.body.removeChild(leadiDNoscript);
-      }
-    };
+      return () => {
+        if (document.body.contains(leadiDScript)) {
+          document.body.removeChild(leadiDScript);
+        }
+      };
+    }
   }, []);
 
   const handleChange = (e) => {

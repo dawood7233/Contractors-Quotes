@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserTerms = () => {
   return (
@@ -8,7 +9,7 @@ const UserTerms = () => {
           User Terms And Conditions
         </h1>
       </div>
-
+      <div className="p-6">
       <section>
         <p>
           <strong>
@@ -22,7 +23,7 @@ const UserTerms = () => {
           services provided and offered in or through this platform, by any
           alternative methods (including, for example, telephone, mail, text,
           email, or facsimile), you accept and agree to be bound by this
-          Agreement, these Services, and our Privacy Policy, which is
+          Agreement, these Services, and our <Link to="/privacyPolicy" className="text-blue-400 underline">Privacy Policy</Link>, which is
           incorporated by reference.
         </p>
         <p>
@@ -172,6 +173,7 @@ const UserTerms = () => {
           you and us, superseding any prior agreements.
         </p>
       </section>
+      </div>
     </div>
   );
 };

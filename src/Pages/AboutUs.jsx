@@ -18,13 +18,21 @@ const AboutUs = () => {
           to your needs and budget can be a daunting task. We make it easy for
           home owners to connect with multiple qualified professionals in their
           area. Able to compare services and budgets and make inform decisions.
-          This all can be achieved by few clicks by filling the form. What
-          thecontractornow helps you with? - To find the right Professional near
-          you - It saves you time as you do not have to find different
-          contractors through extensive searches. - Compare multi quotations and
-          make the right decision. - Find the right professional and get the job
-          done
+          This all can be achieved by few clicks by filling the form. 
         </p>
+        <div  className="pl-8 pt-10">
+        <h1 className="font-bold">What
+        thecontractornow helps you with?</h1>
+        <ul>
+          <li>- To find the right Professional near you</li>
+          <li>
+            - It saves you time as you do not have to find different contractors
+            through extensive searches.
+          </li>
+          <li>- Compare multi quotations and make the right decision.</li>
+          <li>- Find the right professional and get the job done</li>
+        </ul>
+        </div>
       </div>
 
       {/* How It Works Section */}

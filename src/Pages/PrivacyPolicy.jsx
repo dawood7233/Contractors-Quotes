@@ -425,8 +425,8 @@ const PrivacyPolicy = () => {
       <h1 className="font-bold text-2xl">CALIFORNIA RESIDENTS- Your California Rights</h1>
       <p>
         The California Consumer Protection Act has granted specific rights and
-        remedies. To review all <Link to="/californiaPrivacy" className="text-blue-400 underline">California Privacy Rights</Link>  and Remedies please
-        click here
+        remedies. To review all California Privacy Rights  and Remedies please
+        <Link to="/californiaPrivacy" className="text-blue-400 underline"> click here</Link>
       </p>
       <h1 className="font-bold text-2xl">Contact Information</h1>
       <p>
