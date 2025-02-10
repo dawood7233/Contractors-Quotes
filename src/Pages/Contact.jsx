@@ -8,7 +8,7 @@ const Contact = () => {
     <div className="flex flex-col items-center min-h-screen bg-gray-100 pt-10">
       {/* Hero Section */}
       <div className="bg-gradient-to-tr from-amber-500 to-[#1f2020] text-black text-center py-16 px-6 w-full hover">
-        <h1 className="text-4xl font-bold mb-4 cursor-pointer">Contact Us</h1>
+        <h1 className="text-4xl font-bold pt-5 cursor-pointer">Contact Us</h1>
       </div>
       <div className="w-full max-w-4xl p-8  mb-8">
         <form>

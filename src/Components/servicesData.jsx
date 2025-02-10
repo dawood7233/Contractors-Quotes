@@ -430,7 +430,7 @@ export const allServices = [
     id: 2,
     title: "Windows",
     description:
-      "Enhance your home’s beauty and efficiency with our premium window services. From installations to replacements, we provide energy-saving, stylish, and durable options.",
+      "Enhance your home’s and offices beauty and efficiency with our premium window services. From installations to replacements, we provide energy-saving, stylish, and durable options.",
     image: "/assets/images/windows.gif",
     inputs: [
       {
@@ -461,7 +461,7 @@ export const allServices = [
     id: 3,
     title: "Roofing",
     description:
-      "Protect your home with our reliable roofing solutions. Whether you need a new roof, repairs, or maintenance, we ensure durability, safety, and top-notch craftsmanship.",
+      "Protect your home with our reliable roofing solutions. Whether you need new roof, repairs, or maintenance, we ensure durability, safety, and top-notch craftsmanship.",
     image: "/assets/images/home.gif",
     inputs: [
       {
