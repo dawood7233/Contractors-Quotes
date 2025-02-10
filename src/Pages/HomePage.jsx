@@ -144,7 +144,7 @@ const HomePage = () => {
       </div>
 
       {/* Get Started Section */}
-      <div className="bg-gradient-to-r from-amber-500 to-[#1f2020] text-black py-16 px-6">
+      <div className="bg-gradient-to-bl from-amber-500 to-[#1f2020] text-black py-16 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Start Your Project?
@@ -154,7 +154,7 @@ const HomePage = () => {
             a success.
           </p>
           <button
-            className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
+            className="btn px-6 py-3 bg-[#ffb000] text-black font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
             onClick={() => navigate("/services")}
           >
             Get Started

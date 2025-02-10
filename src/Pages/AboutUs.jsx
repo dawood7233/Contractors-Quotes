@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <div className="bg-gray-100 pt-10">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-amber-500 to-[#1f2020]  text-black text-center py-16 px-6">
+      <div className="bg-gradient-to-tr from-amber-500 to-[#1f2020]  text-black text-center py-16 px-6">
         <h1 className="text-4xl font-bold mb-4">About Us</h1>
       </div>
 
@@ -76,7 +76,7 @@ const AboutUs = () => {
         </div>
       </div>
       {/* Call to Action Section */}
-      <div className="bg-gradient-to-r from-amber-500 to-[#1f2020] text-black py-16 px-6">
+      <div className="bg-gradient-to-bl from-amber-500 to-[#1f2020] text-black py-16 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Start Your Project?
