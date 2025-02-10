@@ -3,7 +3,7 @@ import React from "react";
 const CaliforniaPrivacyNotice = () => {
   return (
     <div className="pt-20 ">
-      <div className="bg-gradient-to-r from-amber-400 to-secondary text-black text-center py-16 px-6 w-full hover">
+      <div className="bg-gradient-to-r from-amber-500 to-[#1f2020] text-black text-center py-16 px-6 w-full hover">
         <h1 className="text-4xl font-bold mb-4 cursor-pointer">
           California Privacy
         </h1>

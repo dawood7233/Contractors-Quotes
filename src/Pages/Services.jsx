@@ -28,7 +28,7 @@ const Services = ({ visibleServices }) => {
               <h3 className="text-xl font-semibold mb-2 ">{service.title}</h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
               <button
-                className="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-[#ffb000] transition duration-300 hover:text-black"
+                className="px-4 py-2 bg-[#1f2020] text-white rounded-lg hover:bg-[#ffb000] transition duration-300 hover:text-black"
               >
                 Get Started
               </button>
@@ -38,7 +38,7 @@ const Services = ({ visibleServices }) => {
         {visibleServices < allServices.length && (
           <div className="text-center mt-8">
             <button
-              className="btn btn-primary animate-bounce"
+              className="btn bg-[#ffb000] animate-bounce"
               onClick={() => navigate("/services")}
             >
               Show All

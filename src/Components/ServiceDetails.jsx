@@ -209,7 +209,7 @@ const ServiceDetails = () => {
       );
 
       const responseText = await response.text();
-      alert("Server response: " + responseText);
+      // alert("Server response: " + responseText);
     } catch (error) {
       console.error("Error submitting demo form:", error);
       alert("There was an error submitting the form. Please try again.");
@@ -294,7 +294,7 @@ const ServiceDetails = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {service?.inputs.map((input, index) => (
                 <div className="mb-4" key={index}>
-                  <label className="block text-secondary font-medium mb-2">
+                  <label className="block text-[#1f2020] font-medium mb-2">
                     {input.question}
                   </label>
                   {input.options ? (
@@ -361,7 +361,7 @@ const ServiceDetails = () => {
             <div className="mb-1">
               <label
                 htmlFor="firstName"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 First Name
               </label>
@@ -380,7 +380,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="lastName"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 Last Name
               </label>
@@ -399,7 +399,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 Email
               </label>
@@ -417,7 +417,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="phone"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 Phone Number
               </label>
@@ -448,7 +448,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="streetAddress"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 Street Address
               </label>
@@ -467,7 +467,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="city"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 City
               </label>
@@ -486,7 +486,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="state"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 State
               </label>
@@ -556,7 +556,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="zipCode"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 Zip Code
               </label>
@@ -596,7 +596,7 @@ const ServiceDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="HomeOwner"
-                  className="block text-secondary font-medium"
+                  className="block text-[#1f2020] font-medium"
                 >
                   Home Owner:
                 </label>
@@ -617,7 +617,7 @@ const ServiceDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="PropertyType"
-                  className="block text-secondary font-medium"
+                  className="block text-[#1f2020] font-medium"
                 >
                   Property Type?
                 </label>
@@ -639,7 +639,7 @@ const ServiceDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="PurchaseTimeFrame"
-                  className="block text-secondary font-medium"
+                  className="block text-[#1f2020] font-medium"
                 >
                   Purchase TimeFrame
                 </label>
@@ -663,7 +663,7 @@ const ServiceDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="BestTimeToCall"
-                  className="block text-secondary font-medium"
+                  className="block text-[#1f2020] font-medium"
                 >
                   What is the best time to call you?
                 </label>
@@ -687,7 +687,7 @@ const ServiceDetails = () => {
             <div className="mb-4">
               <label
                 htmlFor="Brief data about requirements"
-                className="block text-secondary font-medium"
+                className="block text-[#1f2020] font-medium"
               >
                 Tell us about your service requirements in brief
               </label>
@@ -715,7 +715,7 @@ const ServiceDetails = () => {
                     !formData.agreement && showError ? "border-red-500" : ""
                   }`}
                 />
-                <span className="text-sm text-secondary">
+                <span className="text-sm text-[#1f2020]">
                   By clicking{" "}
                   <Link to="/services" className="underline  text-blue-400">
                     GET YOUR QUOTE
@@ -752,7 +752,7 @@ const ServiceDetails = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="btn w-full bg-primary text-black transition duration-300"
+                className="btn w-full bg-[#ffb000] text-black transition duration-300"
                 onClick={(e) => {
                   if (!formData.agreement) {
                     e.preventDefault(); // Prevent submission
@@ -782,7 +782,7 @@ const ServiceDetails = () => {
       {/* How It Works Section */}
       <div className="bg-white py-12">
         <div className="container mx-auto px-6 lg:px-20">
-          <h2 className="text-3xl font-bold text-center text-secondary mb-8 hover:text-[#ffb000] transition duration-300">
+          <h2 className="text-3xl font-bold text-center text-[#1f2020] mb-8 hover:text-[#ffb000] transition duration-300">
             How It Works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
@@ -792,7 +792,7 @@ const ServiceDetails = () => {
               <h3 className="text-xl font-bold mb-2">
                 Complete The Short Form
               </h3>
-              <p className="text-secondary">
+              <p className="text-[#1f2020]">
                 Answer a few easy questions regarding your project needs to get
                 matched with the services you require.
               </p>
@@ -801,17 +801,17 @@ const ServiceDetails = () => {
             <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
               <div className="text-6xl text-amber-300 mb-4">🔍</div>
               <h3 className="text-xl font-bold mb-2">
-                Find Home Service Professionals
+              Find Pro Professionals
               </h3>
-              <p className="text-secondary">
-                Get a competitive quote from a contractor in your area!
+              <p className="text-[#1f2020]">
+              You can find local home improvement professionals who specialize in the type of work you need.
               </p>
             </div>
             {/* Step 3 */}
             <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
               <div className="text-6xl text-amber-300 mb-4">🏠</div>
               <h3 className="text-xl font-bold mb-2">Local Pro In Your Area</h3>
-              <p className="text-secondary">
+              <p className="text-[#1f2020]">
                 Enter your project details, and we will match you with the best
                 local contractors.
               </p>

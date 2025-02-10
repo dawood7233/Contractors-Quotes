@@ -292,7 +292,7 @@ const NavBar = () => {
         {/* Navbar End */}
         <div className="navbar-end">
           <Link
-            className="btn bg-primary text-black transition duration-300"
+            className="btn bg-[#ffb000] text-black transition duration-300"
             to="/services"
           >
             Get Quotes

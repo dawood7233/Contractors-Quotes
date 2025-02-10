@@ -788,7 +788,7 @@ export const allServices = [
     id: 14,
     title: "Movers",
     description:
-      "Make your move seamless with our professional moving services. From packing to unloading, we ensure safe, efficient, and stress-free relocation for homes and businesses alike.",
+      "Make your move seamless with our professional moving services. we ensure safe, and stress-free relocation for homes and businesses.",
     image: "/assets/images/movers.gif",
     inputs: [
       {

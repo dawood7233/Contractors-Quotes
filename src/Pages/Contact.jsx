@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 pt-10">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-amber-400 to-secondary text-black text-center py-16 px-6 w-full hover">
+      <div className="bg-gradient-to-r from-amber-500 to-[#1f2020] text-black text-center py-16 px-6 w-full hover">
         <h1 className="text-4xl font-bold mb-4 cursor-pointer">Contact Us</h1>
       </div>
       <div className="w-full max-w-4xl p-8  mb-8">
@@ -83,7 +83,7 @@ const Contact = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="w-full py-3 bg-primary text-black font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:primary"
+              className="w-full py-3 bg-[#ffb000] text-black font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:[#ffb000]"
             >
               Send Message
             </button>
@@ -102,7 +102,7 @@ const Contact = () => {
             a success.
           </p>
           <button
-            className="btn px-6 py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-gray-100"
+            className="btn px-6 py-3 bg-[#ffb000] text-black font-semibold rounded-lg shadow-md hover:bg-gray-100"
             onClick={() => navigate("/services")}
           >
             Get Started
