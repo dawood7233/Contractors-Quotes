@@ -429,17 +429,27 @@ const ServiceDetails = () => {
                 onChange={(e) => {
                   const value = e.target.value;
 
-                  // Allow only numeric input and limit to 5 characters
-                  if (/^\d{0,10}$/.test(value)) {
-                    handleChange(e); // Update the form data if valid
+                  // Allow only numeric input and limit to 10 digits
+                  if (/^\d*$/.test(value)) {
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      phone: value.slice(0, 10), // Limit to 10 characters
+                    }));
                   }
                 }}
                 className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
-              {formData.phone.length > 11 && (
+
+              {/* Error Messages */}
+              {formData.phone.length > 10 && (
                 <p className="text-red-600 text-sm mt-1">
-                  Phone num must not exceed 10 digits.
+                  Phone number must not exceed 10 digits.
+                </p>
+              )}
+              {formData.phone.length > 0 && formData.phone.length < 10 && (
+                <p className="text-red-600 text-sm mt-1">
+                  Phone number must be exactly 10 digits.
                 </p>
               )}
             </div>
@@ -568,20 +578,27 @@ const ServiceDetails = () => {
                 onChange={(e) => {
                   const value = e.target.value;
 
-                  // Allow numeric input but limit it to 5 digits
+                  // Allow numeric input but enforce 5-digit length
                   if (/^\d*$/.test(value)) {
                     setFormData((prevData) => ({
                       ...prevData,
-                      zipCode: value.slice(0, 5), // Limit the value to 5 characters
+                      zipCode: value.slice(0, 5), // Limit input to 5 characters
                     }));
                   }
                 }}
                 className="w-full px-4 py-0.5 border-b-2 border-[#1f2020] rounded-md focus:outline-none focus:ring focus:primary"
                 required
               />
+
+              {/* Error Messages */}
               {formData.zipCode.length > 5 && (
                 <p className="text-red-600 text-sm mt-1">
                   Zip Code must not exceed 5 digits.
+                </p>
+              )}
+              {formData.zipCode.length > 0 && formData.zipCode.length < 5 && (
+                <p className="text-red-600 text-sm mt-1">
+                  Zip Code must be exactly 5 digits.
                 </p>
               )}
             </div>
@@ -754,7 +771,20 @@ const ServiceDetails = () => {
                 type="submit"
                 className="btn w-full bg-[#ffb000] text-black transition duration-300"
                 onClick={(e) => {
-                  if (!formData.agreement) {
+                  // Check if any required service-specific field is empty
+                  const requiredFields =
+                    service?.inputs?.map((input) => input.question) || [];
+                  const emptyFields = requiredFields.some(
+                    (field) => !formData[field]
+                  );
+
+                  // Validation checks
+                  if (
+                    formData.zipCode.length < 5 ||
+                    formData.phone.length < 10 ||
+                    !formData.agreement ||
+                    emptyFields
+                  ) {
                     e.preventDefault(); // Prevent submission
                     setShowError(true); // Show error message
                   } else {
@@ -764,7 +794,18 @@ const ServiceDetails = () => {
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
-                    if (!formData.agreement) {
+                    const requiredFields =
+                      service?.inputs?.map((input) => input.question) || [];
+                    const emptyFields = requiredFields.some(
+                      (field) => !formData[field]
+                    );
+
+                    if (
+                      formData.zipCode.length < 5 ||
+                      formData.phone.length < 10 ||
+                      !formData.agreement ||
+                      emptyFields
+                    ) {
                       setShowError(true);
                     } else {
                       setShowError(false);
@@ -773,8 +814,15 @@ const ServiceDetails = () => {
                   }
                 }}
               >
-                Submit
+                Get My Consultation
               </button>
+
+              {/* Error Messages */}
+              {showError && (
+                <p className="text-red-600 text-sm mt-1">
+                  Please fill out all required fields before submitting.
+                </p>
+              )}
             </div>
           </div>
         </form>
@@ -800,11 +848,10 @@ const ServiceDetails = () => {
             {/* Step 2 */}
             <div className="text-center bg-gray-100 rounded-lg p-6 shadow-md hover:bg-[#ffae00de] transition duration-500 cursor-pointer">
               <div className="text-6xl text-amber-300 mb-4">🔍</div>
-              <h3 className="text-xl font-bold mb-2">
-              Find Pro Professionals
-              </h3>
+              <h3 className="text-xl font-bold mb-2">Find Pro Professionals</h3>
               <p className="text-[#1f2020]">
-              You can find local home improvement professionals who specialize in the type of work you need.
+                You can find local home improvement professionals who specialize
+                in the type of work you need.
               </p>
             </div>
             {/* Step 3 */}
